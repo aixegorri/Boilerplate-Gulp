@@ -1,0 +1,75 @@
+{
+	"fonts": {
+		"src": "src/assets/fonts/**/*.{eot,svg,ttf,woff}",
+		"dest": "dist/assets/fonts"
+	},
+	"images": {
+		"src": "src/assets/img/**/*.{gif,jpg,jpeg,png,svg}",
+		"dest": "dist/assets/img"
+	},
+	"vendorJS": {
+		"src": "src/assets/js/vendor/*.js",
+		"dest": "dist/assets/js/vendor"
+	},
+	"statics": {
+		"src": "src/statics/**.*",
+		"dest": "dist"
+	},
+	"docs": {
+		"src": [
+			"src/docs/**/*.pug",
+			"!src/docs/partials/*.pug",
+			"!src/docs/layouts/*.pug"
+		],
+		"dest": "dist"
+	},
+	"styles": {
+		"src": "src/assets/scss/*.s*ss",
+		"dest": "dist/assets/css"
+	},
+	"plugins": {
+		"src": [
+			"src/assets/js/plugins/plugins.js",
+			"src/assets/js/plugins/_*.js"
+		],
+		"dest": "dist/assets/js/"
+	},
+	"scripts": {
+		"src": [
+			"src/assets/js/_sn.js",
+			"src/assets/js/_sn.cache.js",
+			"src/assets/js/_sn.cookies.js",
+			"src/assets/js/main.js"
+		],
+		"dest": "dist/assets/js/"
+	},
+	"watch": {
+		"images": [
+			"src/assets/img/**/*.{gif,jpg,jpeg,png,svg}"
+		],
+		"vendorJS": [
+			"src/assets/js/vendor/*.js"
+		],
+		"humansTXT": [
+			"src/humans.txt"
+		],
+		"scripts": [
+			"src/assets/js/**/*.js"
+		],
+		"styles": [
+			"src/scss/**/*.{scss,sass,css}"
+		],
+		"templates": [
+			"src/templates/**/*.pug",
+			"!src/templates/partials/*.pug"
+		],
+		"templatePartials": [
+			"src/templates/partials/*.pug",
+			"src/templates/layouts/*.pug"
+		],
+		"html": [
+			"dist/**/*.html",
+			"!dist/assets"
+		]
+	}
+}

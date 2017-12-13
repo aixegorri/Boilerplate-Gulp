@@ -1,0 +1,4 @@
+/**
+ * SN Object
+ */
+var SN = {};
