@@ -1,3 +1,8 @@
+### Folders ###
+# Dist folder
+dist
+
+
 ### Compressed ###
 *.7z
 *.deb
