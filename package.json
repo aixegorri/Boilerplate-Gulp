@@ -1,7 +1,7 @@
 {
   "name": "boilerplate-gulp",
   "version": "1.0.0",
-  "description": "Aixegori Starter Kit",
+  "description": "Aixegorri Starter Kit",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
