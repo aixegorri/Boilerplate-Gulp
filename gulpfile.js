@@ -80,7 +80,7 @@ gulp.task('statics', function () {
 
 
 
-// > Process .PUG files into 'public' folder
+// > Process .PUG files into 'dist' folder
 // gulp.task( 'docs' , function(cb) {
 // 	return gulp.src(config.docs.src)
 // 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
@@ -96,7 +96,7 @@ gulp.task('statics', function () {
 
 
 
-// > Process partials .Pug files into 'public' folder
+// > Process partials .Pug files into 'dist' folder
 // gulp.task( 'docsPartials' , function(cb) {
 // 	return gulp.src(config.docs.src)
 // 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
@@ -111,7 +111,7 @@ gulp.task('statics', function () {
 
 
 
-// > Process SASS/SCSS files to generate final css files in 'public' folder
+// > Process SASS/SCSS files to generate final css files in 'dist' folder
 gulp.task( 'styles' , function(cb) {
 	return gulp.src(config.styles.src)
 		.pipe(sourcemaps.init())
@@ -139,7 +139,7 @@ gulp.task( 'styles' , function(cb) {
 
 
 
-// > Process SASS/SCSS files to generate final css files in 'public' folder
+// > Process SASS/SCSS files to generate final css files in 'dist' folder
 gulp.task( 'styles-min' , function(cb) {
 	return gulp.src(config.styles.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
@@ -228,7 +228,7 @@ gulp.task('scripts-min', function(){
 gulp.task('go', ['default'], function () {
 	browserSync.init({
 		server : {
-			baseDir: "public"
+			baseDir: "dist"
 		},
 		ghostMode: false,
 		online: true
@@ -255,7 +255,7 @@ gulp.task('bs-reload', function () {
 
 
 
-// > ZIP the public folder
+// > ZIP the dist folder
 gulp.task('zipit', ['deploy'], function() {
 	return gulp.src(config.zip.src)
 		.pipe(zip(config.zip.name))
@@ -266,7 +266,7 @@ gulp.task('zipit', ['deploy'], function() {
 
 
 
-// > Generate 'public' folder
+// > Generate 'dist' folder
 gulp.task('default', ['clean'], function (cb) {
 	runSequence('styles', ['statics', 'images', 'vendor-js', 'humansTXT', 'docs', 'docsPartials', 'plugins', 'scripts'], cb);
 });
@@ -275,7 +275,7 @@ gulp.task('default', ['clean'], function (cb) {
 
 
 
-// > Generate production-ready 'public' folder
+// > Generate production-ready 'dist' folder
 gulp.task('deploy', ['clean'], function (cb) {
 	runSequence('styles-min', ['statics', 'images', 'vendor-js', 'humansTXT', 'docs', 'docsPartials', 'plugins-clean', 'scripts-min'], cb);
 });
@@ -284,4 +284,4 @@ gulp.task('deploy', ['clean'], function (cb) {
 
 
 // > Delete Public folder
-gulp.task('clean', del.bind(null, ['public']));
+gulp.task('clean', del.bind(null, ['dist']));

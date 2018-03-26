@@ -51,13 +51,13 @@
 			"src/assets/js/vendor/*.js"
 		],
 		"humansTXT": [
-			"src/humans.txt"
+			"src/statics/humans.txt"
 		],
 		"scripts": [
 			"src/assets/js/**/*.js"
 		],
 		"styles": [
-			"src/scss/**/*.{scss,sass,css}"
+			"src/assets/scss/**/*.{scss,sass,css}"
 		],
 		"templates": [
 			"src/templates/**/*.pug",
