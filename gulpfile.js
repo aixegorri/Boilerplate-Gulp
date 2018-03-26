@@ -13,14 +13,12 @@ var gulp         = require('gulp');
 var gutil        = require('gulp-util');
 var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
-// var pug          = require('gulp-pug');
 var reload       = browserSync.reload;
 var rename       = require('gulp-rename');
 var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
-
 
 
 
@@ -80,32 +78,15 @@ gulp.task('statics', function () {
 
 
 
-// > Process .PUG files into 'dist' folder
-// gulp.task( 'docs' , function(cb) {
-// 	return gulp.src(config.docs.src)
-// 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-// 		.pipe(cache('docsCache'))
-// 		.pipe(pug({
-// 			pretty: '\t'
-// 		}))
-// 		.pipe(gulp.dest(config.docs.dest))
-// 		.pipe(notify({message: '> Templates OK', onLast: true}));
-// });
-
-
-
-
-
-// > Process partials .Pug files into 'dist' folder
-// gulp.task( 'docsPartials' , function(cb) {
-// 	return gulp.src(config.docs.src)
-// 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-// 		.pipe(pug({
-// 			pretty: '\t'
-// 		}))
-// 		.pipe(gulp.dest(config.docs.dest))
-// 		.pipe(notify({message: '> Complete docs OK', onLast: true}));
-// });
+// > Process .HTML files into 'dist' folder
+gulp.task( 'docs' , function(cb) {
+	return gulp.src(config.docs.src)
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(cache('docsCache'))
+		.pipe(gulp.dest(config.docs.dest))
+		.pipe(browserSync.reload({ stream:true }))
+		.pipe(notify({message: '> HTML OK', onLast: true}));
+});
 
 
 
@@ -119,9 +100,9 @@ gulp.task( 'styles' , function(cb) {
 		.pipe(sass({
 			outputStyle: 'extended',
 		}))
-		// .pipe(combineMq({
-		// 	beautify: true
-		// }))
+		.pipe(combineMq({
+			beautify: true
+		}))
 		.pipe(autoprefixer({
 			browsers: [
 				'last 2 versions',
@@ -166,7 +147,7 @@ gulp.task( 'styles-min' , function(cb) {
 
 // > Process plugins into a single JS file inside 'assets/js' folder
 gulp.task('plugins', function(){
-	return gulp.src(config.plugins.src) // REVISAR ORDEN EN RUTA !!!!
+	return gulp.src(config.plugins.src) // CHECK FILES PATH ORDER !
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(concat('plugins.js'))
@@ -238,15 +219,14 @@ gulp.task('go', ['default'], function () {
 	gulp.watch(config.watch.humansTXT, ['humansTXT']);
 	gulp.watch(config.watch.styles, ['styles']);
 	gulp.watch(config.watch.scripts, ['scripts', 'plugins']);
-	gulp.watch(config.watch.docs, ['bs-reload', ['docs']]);
-	gulp.watch(config.watch.docsPartials, ['bs-reload', ['docsPartials']]);
+	gulp.watch(config.watch.docs, ['docs']);
 });
 
 
 
 
 
-// > Force a browser page reload
+// > Force a browser page reload - CHECK
 gulp.task('bs-reload', function () {
 	browserSync.reload();
 });
@@ -255,20 +235,9 @@ gulp.task('bs-reload', function () {
 
 
 
-// > ZIP the dist folder
-gulp.task('zipit', ['deploy'], function() {
-	return gulp.src(config.zip.src)
-		.pipe(zip(config.zip.name))
-		.pipe(gulp.dest(config.zip.dest));
-});
-
-
-
-
-
 // > Generate 'dist' folder
 gulp.task('default', ['clean'], function (cb) {
-	runSequence('styles', ['statics', 'images', 'vendor-js', 'humansTXT', 'docs', 'docsPartials', 'plugins', 'scripts'], cb);
+	runSequence('styles', ['fonts', 'images', 'vendor-js', 'statics', 'docs', 'plugins', 'scripts'], cb);
 });
 
 
@@ -277,7 +246,7 @@ gulp.task('default', ['clean'], function (cb) {
 
 // > Generate production-ready 'dist' folder
 gulp.task('deploy', ['clean'], function (cb) {
-	runSequence('styles-min', ['statics', 'images', 'vendor-js', 'humansTXT', 'docs', 'docsPartials', 'plugins-clean', 'scripts-min'], cb);
+	runSequence('styles-min', ['fonts', 'images', 'vendor-js', 'statics', 'docs', 'plugins-clean', 'scripts-min'], cb);
 });
 
 
