@@ -9,7 +9,7 @@
 
 
 
-// Mediaqueries y breakpoints: El mixin consta de 4 partes
+// Mediqueries y breakpoints: El mixin consta de 4 partes
 //
 //  $breakpoint: Es el Brakpoint o la variable de breakpoint, las definimos en _variables.scss
 //               las que vienen por defecto: $bp1, $bp2, $bp3, $bp4 y $bp5.
@@ -30,7 +30,7 @@
 //
 // .texto {
 // 	color:red;
-// 	@include media-query-bp($bp1,max,device-width,screen) {
+// 	@include media-query-bp($bp1,min,width,screen) {
 // 		color: blue;
 // 	}
 // }
@@ -42,24 +42,9 @@
 //  **************************************************************************
 // .texto {
 // color: red; }
-// @media screen and (max-device-width: 45em) {
+// @media screen and (min-width: 45em) {
 //   .texto {
 //     color: blue; } }
-//  **************************************************************************
-//
-// Y en la hoja de estilos para navegadores que no soportan mediaqueries
-// compilaría lo siguiente (componenter/no-mq.scss):
-//
-//  **************************************************************************
-//
-// .texto {
-// color: red; }
-// .ie8-sucks .texto {
-//   color: blue; }
-//
-//  **************************************************************************
-//
-// La clase .ie8-sucks se puede cambiar en la configuración de variables.
 //
 //
 @mixin media-query-bp($breakpoint, $query1: min, $query2: width, $target: "") {
@@ -105,6 +90,41 @@
 // $include flex-direction(VALUE) (row | row-reverse | column | column-reverse)
 @mixin flex-direction($direction) {
 	flex-direction : $direction;
+}
+
+
+/* Flexbox Space Between Last Row Align Left by Diana Aceves 
+ * https://codepen.io/diana_aceves/pen/KVGNZg?editors=1100
+ */
+@mixin last-row-flexbox($num-columns, $width-items) {
+
+   // Vamos a calcular el espacio que queda entre los elementos para usarlo de márgen en los sueltos.
+   $filled-space: $width-items * $num-columns;
+   $margin: calc((100% - #{$filled-space}) / (#{$num-columns} - 1));
+
+   $num-cols-1: $num-columns - 1; 
+
+   // Establezco el ancho
+   width: $width-items; 
+
+   // Damos el margen izquierdo a todos los elementos sueltos menos al primero.
+   &:nth-child(#{$num-columns}n+1):nth-last-child(-n+#{$num-cols-1}) ~ & {
+      margin-left: $margin;
+   }
+
+   // Mediante el bucle, generamos todas las posibles posiciones del last-child para darle margin-right auto.
+   @for $i from 1 through $num-columns - 2 {
+      $index: $num-columns - $i;
+      &:nth-child(#{$num-columns}n+#{$index}):last-child {
+         margin-right: auto;
+      }
+   } 
+
+   // Linter
+   // &:nth-child(#{$num-columns}n+1):nth-last-child(-n+#{$num-cols-1}),
+   // &:nth-child(#{$num-columns}n+1):nth-last-child(-n+#{$num-cols-1}) ~ & {
+   //    background: deepskyblue;
+   // }
 }
 
 

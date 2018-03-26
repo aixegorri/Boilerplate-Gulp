@@ -12,38 +12,47 @@ $media-queries-supported : true;
 
 @import "content.scss";
 
+/**
+ * Core
+ * 
+ */
 @import "core/variables.scss";
-
+@import "core/functions.scss";
 @import "core/mixins.scss";
-
 @import "core/placeholders.scss";
-
 @import "core/icons.scss";
 
+/**
+ * Vendor
+ * 
+ */
+
+
+/**
+ * Components
+ * 
+ */
 @import "components/reset.scss";
-
 @import "components/fonts.scss";
-
 @import "components/links.scss";
-
 @import "components/tables.scss";
-
 @import "components/buttons.scss";
-
 @import "components/elements.scss";
-
 @import "components/tipografia.scss";
-
 @import "components/navigation.scss";
-
 @import "components/pagination.scss";
-
 @import "components/forms.scss";
 
+/**
+ * Layout
+ * 
+ */
 @import "layout/site.scss";
 
+/**
+ * Important!
+ * 
+ */
 @import "components/textures.scss";
-
-@import "layout/breakpoints.scss";
 
 // @import "core/debug.scss";  // Utilizado para comprobar que el marcado HTML no contenga errores

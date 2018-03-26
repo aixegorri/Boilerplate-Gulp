@@ -3,13 +3,31 @@
 \*------------------------------------*/
 /**
  * Content....................... Esto que lees
+/**
 
+/**
+ * Core
+/**
+  
  * Variables..................... Configuramos todas las variables del framework
 
- * Mixins........................ Mixins de LESS
+ * Functions..................... Funciones de SASS
 
- * Helpers....................... Clases de ayuda
+ * Mixins........................ Mixins de SASS
 
+ * Placeholders.................. Clases genéricas de ayuda
+
+ * Icons......................... Font icons
+
+/**
+ * Vendor
+/** 
+
+
+/**
+ * Components
+/**
+ 
  * Reset......................... Reinicio de valores CSS
 
  * Fonts......................... Fuentes que vamos a importar
@@ -26,15 +44,26 @@
 
  * Navigation.................... Una navegación, por si quieres usar esta y no la tuya propia
 
+ * Pagination.................... Estilos básicos para las paginaciones
+
  * Forms......................... Estilos de todos los elementos de formularios y sus variantes
+
+
+/**
+ * Layout
+/**
 
  * Site.......................... Aquí escribes tus estilos para la web se vea como tu quieres ;)
 
- * Pagination.................... Estilos básicos para las paginaciones
+
+/**
+ * Important!
+/**
 
  * Textures...................... Badges, cajas y wells
 
  * Breakpoints................... Importamos breakpoints basados en las variables @bp$
 
- * Patron........................ Estilos para la guía de patrones
+
+ * Debug......................... Comprueba que el marcado HTML no contenga errores
  */

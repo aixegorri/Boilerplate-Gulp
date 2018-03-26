@@ -15,11 +15,13 @@
  * "Start with the small screen first, then expand until it looks like shit. Time to insert a breakpoint!"
  */
 
-$bp1 : 30em;
-$bp2 : 37.5em;
-$bp3 : 48em;
-$bp4 : 56.25em;
-$bp5 : 68.75em;
+$bp0 : 25em;     // Mobile S
+$bp1 : 30em;     // Mobile L
+$bp2 : 37.5em;   // Tablet S
+$bp3 : 48em;     // Tablet L
+$bp4 : 56.25em;  // Laptop S
+$bp5 : 68.75em;  // Laptop L
+$bp-handheld : handheld; // Touch Devices
 
 
 
@@ -33,19 +35,6 @@ $bp5 : 68.75em;
  * paulirish.com/2012/box-sizing-border-box-ftw ?
  */
 $border-box: true!default;
-
-
-
-
-
-/*------------------------------------*\
-    $no-mediaquery-class
-\*------------------------------------*/
-/**
- * Si decides incluir lt-ie9 para dar soporte a navegadores sin estilos
- * esta es la clase que se añadirá a todos los elementos.
- */
-$no-mq-classname: ".ie8-sucks";
 
 
 
@@ -129,11 +118,11 @@ $basefontsize :      16;
 /**
  * Brand stuff
  */
-$basecolor      : rgb(255,148,77); // Naranja
+$basecolor      : rgb(255,148,77); // Zumo de naranja
 $basecolor-light: lighten($basecolor, 5%);
-$secondary      : rgb(219,216,121); // Rojo CoolVillage
-$bordercolor    : lighten($secondary, 50); // Verde Bordes
-$compcolor      : rgb(216,240,227); //
+$secondary      : rgb(219,216,121); // Pistacho
+$bordercolor    : lighten($secondary, 50); // Color Bordes
+$compcolor      : rgb(216,240,227); // Complementario
 
 /**
  * Escala de grises

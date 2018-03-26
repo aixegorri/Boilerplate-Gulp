@@ -1,71 +1,63 @@
 {
 	"fonts": {
-		"src": "src/assets/fonts/**/*.{eot,svg,ttf,woff}",
+		"src": "_source/assets/fonts/**/**.*",
 		"dest": "dist/assets/fonts"
 	},
 	"images": {
-		"src": "src/assets/img/**/*.{gif,jpg,jpeg,png,svg}",
+		"src": "_source/assets/img/**/*.{gif,jpg,jpeg,png,svg}",
 		"dest": "dist/assets/img"
 	},
 	"vendorJS": {
-		"src": "src/assets/js/vendor/*.js",
+		"src": "_source/assets/js/vendor/*.js",
 		"dest": "dist/assets/js/vendor"
 	},
 	"statics": {
-		"src": "src/statics/**.*",
+		"src": "_source/statics/**.*",
 		"dest": "dist"
 	},
 	"docs": {
 		"src": [
-			"src/docs/**/*.pug",
-			"!src/docs/partials/*.pug",
-			"!src/docs/layouts/*.pug"
+			"_source/docs/**/*.html"
 		],
 		"dest": "dist"
 	},
 	"styles": {
-		"src": "src/assets/scss/*.s*ss",
+		"src": "_source/assets/scss/*.s*ss",
 		"dest": "dist/assets/css"
 	},
 	"plugins": {
 		"src": [
-			"src/assets/js/plugins/plugins.js",
-			"src/assets/js/plugins/_*.js"
+			"_source/assets/js/plugins/_plugins.js",
+			"_source/assets/js/plugins/jquery.cookie.js"
 		],
 		"dest": "dist/assets/js/"
 	},
 	"scripts": {
 		"src": [
-			"src/assets/js/_sn.js",
-			"src/assets/js/_sn.cache.js",
-			"src/assets/js/_sn.cookies.js",
-			"src/assets/js/main.js"
+			"_source/assets/js/_sn.js",
+			"_source/assets/js/_sn.cache.js",
+			"_source/assets/js/main.js"
 		],
 		"dest": "dist/assets/js/"
 	},
 	"watch": {
 		"images": [
-			"src/assets/img/**/*.{gif,jpg,jpeg,png,svg}"
+			"_source/assets/img/**/*.{gif,jpg,jpeg,png,svg}"
 		],
 		"vendorJS": [
-			"src/assets/js/vendor/*.js"
+			"_source/assets/js/vendor/*.js"
 		],
-		"humansTXT": [
-			"src/statics/humans.txt"
+		"statics": [
+			"_source/statics/**.*"
 		],
 		"scripts": [
-			"src/assets/js/**/*.js"
+			"_source/assets/js/**/*.js"
 		],
 		"styles": [
-			"src/assets/scss/**/*.{scss,sass,css}"
+			"_source/assets/scss/**/*.{scss,sass,css}"
 		],
-		"templates": [
-			"src/templates/**/*.pug",
-			"!src/templates/partials/*.pug"
-		],
-		"templatePartials": [
-			"src/templates/partials/*.pug",
-			"src/templates/layouts/*.pug"
+		"docs": [
+			"_source/docs/**/*.html"
 		],
 		"html": [
 			"dist/**/*.html",
