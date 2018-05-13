@@ -10,6 +10,7 @@ var config       = require('./config.json');
 var cssminifiy   = require('gulp-clean-css');
 var del          = require('del');
 var gulp         = require('gulp');
+var imagemin 	 = require('gulp-imagemin')
 var mergeMq 	 = require('gulp-merge-media-queries');
 var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
@@ -56,6 +57,18 @@ gulp.task('images', function () {
 	return gulp.src(config.images.src)
 		.pipe(gulp.dest(config.images.dest))
 		.pipe(notify({message: '> IMAGES OK', onLast: true}));
+});
+
+
+
+
+
+// > Minify Images
+gulp.task('images-min', function () {
+	return gulp.src(config.images.src)
+		.pipe(imagemin())
+		.pipe(gulp.dest(config.images.dest))
+		.pipe(notify({message: '> IMAGES MIN OK', onLast: true}));
 });
 
 
@@ -265,6 +278,6 @@ gulp.task('default',
 // > Build production-ready 'dist' folder
 gulp.task('deploy',
 	gulp.series('clean', 'styles-min',
-		gulp.parallel('fonts', 'images', 'vendor-js', 'statics', 'docs', 'plugins-clean', 'scripts-min')
+		gulp.parallel('fonts', 'images-min', 'vendor-js', 'statics', 'docs', 'plugins-clean', 'scripts-min')
 	)
 );
