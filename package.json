@@ -32,6 +32,7 @@
 		"gulp-merge-media-queries": "^0.2.1",
 		"gulp-notify": "^3.2.0",
 		"gulp-plumber": "^1.2.0",
+		"gulp-processhtml": "^1.2.0",
 		"gulp-rename": "^1.2.2",
 		"gulp-sass": "^3.2.1",
 		"gulp-sourcemaps": "^2.6.4",

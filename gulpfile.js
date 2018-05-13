@@ -14,6 +14,7 @@ var imagemin 	 = require('gulp-imagemin')
 var mergeMq 	 = require('gulp-merge-media-queries');
 var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
+var processhtml	 = require('gulp-processhtml');
 var reload       = browserSync.reload;
 var rename       = require('gulp-rename');
 var sass         = require('gulp-sass');
@@ -111,7 +112,21 @@ gulp.task('docs', function(cb) {
 
 
 
-// > Process SASS/SCSS files to generate final css files in 'dist' folder
+
+// > Minify .HTML files into 'dist' folder
+gulp.task('docs-min', function(cb) {
+	return gulp.src(config.docs.src)
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(processhtml())
+		.pipe(gulp.dest(config.docs.dest))
+		.pipe(notify({message: '> HTML MIN OK', onLast: true}));
+});
+
+
+
+
+
+// > Process SASS/SCSS files to generate final CSS files in 'dist' folder
 gulp.task('styles', function(cb) {
 	return gulp.src(config.styles.src)
 		.pipe(sourcemaps.init())
@@ -139,7 +154,7 @@ gulp.task('styles', function(cb) {
 
 
 
-// > Process SASS/SCSS files to generate final css files in 'dist' folder
+// > Process SASS/SCSS files to generate final minified CSS files in 'dist' folder
 gulp.task('styles-min', function(cb) {
 	return gulp.src(config.styles.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
@@ -157,6 +172,7 @@ gulp.task('styles-min', function(cb) {
 			cascade: false
 		}))
 		.pipe(cssminifiy())
+		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest(config.styles.dest))
 		.pipe(notify({message: '> CSS MIN OK', onLast: true}));
 });
@@ -277,7 +293,7 @@ gulp.task('default',
 
 // > Build production-ready 'dist' folder
 gulp.task('deploy',
-	gulp.series('clean', 'styles-min',
+	gulp.series('clean', 'styles', 'styles-min',
 		gulp.parallel('fonts', 'images-min', 'vendor-js', 'statics', 'docs', 'plugins-clean', 'scripts-min')
 	)
 );
