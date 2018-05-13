@@ -5,12 +5,12 @@ var autoprefixer = require('gulp-autoprefixer');
 var beeper		 = require('beeper');
 var browserSync  = require('browser-sync');
 var cache        = require('gulp-cached');
-var combineMq    = require('gulp-combine-mq');
 var concat       = require('gulp-concat');
 var config       = require('./config.json');
 var cssminifiy   = require('gulp-clean-css');
 var del          = require('del');
 var gulp         = require('gulp');
+var mergeMq 	 = require('gulp-merge-media-queries');
 var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
 var reload       = browserSync.reload;
@@ -106,8 +106,8 @@ gulp.task('styles', function(cb) {
 		.pipe(sass({
 			outputStyle: 'expanded',
 		}))
-		.pipe(combineMq({
-			beautify: true
+		.pipe(mergeMq({
+			log: true
 		}))
 		.pipe(autoprefixer({
 			browsers: [
@@ -133,8 +133,8 @@ gulp.task('styles-min', function(cb) {
 		.pipe(sass({
 			outputStyle: 'compressed',
 		}))
-		.pipe(combineMq({
-			beautify: false
+		.pipe(mergeMq({
+			log: true
 		}))
 		.pipe(autoprefixer({
 			browsers: [
@@ -143,6 +143,7 @@ gulp.task('styles-min', function(cb) {
 			],
 			cascade: false
 		}))
+		.pipe(cssminifiy())
 		.pipe(gulp.dest(config.styles.dest))
 		.pipe(notify({message: '> CSS MIN OK', onLast: true}));
 });
