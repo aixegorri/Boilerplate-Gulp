@@ -2,6 +2,7 @@
  * Gulp Packages
  */
 var autoprefixer = require('gulp-autoprefixer');
+var beeper		 = require('beeper');
 var browserSync  = require('browser-sync');
 var cache        = require('gulp-cached');
 var combineMq    = require('gulp-combine-mq');
@@ -10,12 +11,10 @@ var config       = require('./config.json');
 var cssminifiy   = require('gulp-clean-css');
 var del          = require('del');
 var gulp         = require('gulp');
-var gutil        = require('gulp-util');
 var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
 var reload       = browserSync.reload;
 var rename       = require('gulp-rename');
-var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
@@ -25,10 +24,10 @@ var uglify       = require('gulp-uglify');
 
 
 // > Manage task's errors
-// var onError = function (err) {
-// 	gutil.beep();
-// 	console.log(err);
-// };
+var onError = function (err) {
+	beeper()
+	console.log(err);
+};
 
 
 
@@ -105,7 +104,7 @@ gulp.task('styles', function(cb) {
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(sass({
-			outputStyle: 'extended',
+			outputStyle: 'expanded',
 		}))
 		.pipe(combineMq({
 			beautify: true
