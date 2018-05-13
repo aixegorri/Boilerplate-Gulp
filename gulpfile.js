@@ -2,20 +2,19 @@
  * Gulp Packages
  */
 var autoprefixer = require('gulp-autoprefixer');
+var beeper		 = require('beeper');
 var browserSync  = require('browser-sync');
 var cache        = require('gulp-cached');
-var combineMq    = require('gulp-combine-mq');
 var concat       = require('gulp-concat');
 var config       = require('./config.json');
 var cssminifiy   = require('gulp-clean-css');
 var del          = require('del');
 var gulp         = require('gulp');
-var gutil        = require('gulp-util');
+var mergeMq 	 = require('gulp-merge-media-queries');
 var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
 var reload       = browserSync.reload;
 var rename       = require('gulp-rename');
-var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
@@ -26,7 +25,7 @@ var uglify       = require('gulp-uglify');
 
 // > Manage task's errors
 var onError = function (err) {
-	gutil.beep();
+	beeper()
 	console.log(err);
 };
 
@@ -34,11 +33,18 @@ var onError = function (err) {
 
 
 
+// > Delete Dist folder
+gulp.task('clean', del.bind(null, ['dist']));
+
+
+
+
+
 // > Copy Fonts
-gulp.task('fonts', function () {
+gulp.task('fonts', function() {
 	return gulp.src(config.fonts.src)
 		.pipe(gulp.dest(config.fonts.dest))
-		.pipe(notify({message: '> Fonts OK', onLast: true}));
+		.pipe(notify({message: '> FONTS OK', onLast: true}));
 });
 
 
@@ -49,7 +55,7 @@ gulp.task('fonts', function () {
 gulp.task('images', function () {
 	return gulp.src(config.images.src)
 		.pipe(gulp.dest(config.images.dest))
-		.pipe(notify({message: '> Images OK', onLast: true}));
+		.pipe(notify({message: '> IMAGES OK', onLast: true}));
 });
 
 
@@ -60,7 +66,7 @@ gulp.task('images', function () {
 gulp.task('vendor-js', function () {
 	return gulp.src(config.vendorJS.src)
 		.pipe(gulp.dest(config.vendorJS.dest))
-		.pipe(notify({message: '> Vendor JS OK', onLast: true}));
+		.pipe(notify({message: '> VENDOR JS OK', onLast: true}));
 });
 
 
@@ -71,7 +77,7 @@ gulp.task('vendor-js', function () {
 gulp.task('statics', function () {
 	return gulp.src(config.statics.src)
 		.pipe(gulp.dest(config.statics.dest))
-		.pipe(notify({message: '> Statics OK', onLast: true}));
+		.pipe(notify({message: '> STATICS OK', onLast: true}));
 });
 
 
@@ -79,7 +85,7 @@ gulp.task('statics', function () {
 
 
 // > Process .HTML files into 'dist' folder
-gulp.task( 'docs' , function(cb) {
+gulp.task('docs', function(cb) {
 	return gulp.src(config.docs.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(cache('docsCache'))
@@ -93,15 +99,15 @@ gulp.task( 'docs' , function(cb) {
 
 
 // > Process SASS/SCSS files to generate final css files in 'dist' folder
-gulp.task( 'styles' , function(cb) {
+gulp.task('styles', function(cb) {
 	return gulp.src(config.styles.src)
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(sass({
-			outputStyle: 'extended',
+			outputStyle: 'expanded',
 		}))
-		.pipe(combineMq({
-			beautify: true
+		.pipe(mergeMq({
+			log: true
 		}))
 		.pipe(autoprefixer({
 			browsers: [
@@ -121,14 +127,14 @@ gulp.task( 'styles' , function(cb) {
 
 
 // > Process SASS/SCSS files to generate final css files in 'dist' folder
-gulp.task( 'styles-min' , function(cb) {
+gulp.task('styles-min', function(cb) {
 	return gulp.src(config.styles.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(sass({
 			outputStyle: 'compressed',
 		}))
-		.pipe(combineMq({
-			beautify: false
+		.pipe(mergeMq({
+			log: true
 		}))
 		.pipe(autoprefixer({
 			browsers: [
@@ -137,6 +143,7 @@ gulp.task( 'styles-min' , function(cb) {
 			],
 			cascade: false
 		}))
+		.pipe(cssminifiy())
 		.pipe(gulp.dest(config.styles.dest))
 		.pipe(notify({message: '> CSS MIN OK', onLast: true}));
 });
@@ -205,28 +212,7 @@ gulp.task('scripts-min', function(){
 
 
 
-// > Create a development server with BrowserSync
-gulp.task('go', ['default'], function () {
-	browserSync.init({
-		server : {
-			baseDir: "dist"
-		},
-		ghostMode: false,
-		online: true
-	});
-	gulp.watch(config.watch.images, ['bs-reload', ['images']]);
-	gulp.watch(config.watch.vendorJS, ['bs-reload', ['vendor-js']]);
-	gulp.watch(config.watch.humansTXT, ['humansTXT']);
-	gulp.watch(config.watch.styles, ['styles']);
-	gulp.watch(config.watch.scripts, ['scripts', 'plugins']);
-	gulp.watch(config.watch.docs, ['docs']);
-});
-
-
-
-
-
-// > Force a browser page reload - CHECK
+// > Force a browser page reload
 gulp.task('bs-reload', function () {
 	browserSync.reload();
 });
@@ -235,22 +221,50 @@ gulp.task('bs-reload', function () {
 
 
 
-// > Generate 'dist' folder
-gulp.task('default', ['clean'], function (cb) {
-	runSequence('styles', ['fonts', 'images', 'vendor-js', 'statics', 'docs', 'plugins', 'scripts'], cb);
+// > Build 'dist' folder
+gulp.task('build',
+	gulp.series('clean', 'styles',
+		gulp.parallel('fonts', 'images', 'vendor-js', 'statics', 'docs', 'plugins', 'scripts')
+	)
+);
+
+
+
+
+
+// > Create a development server with BrowserSync & watch files
+gulp.task('work', function() {
+	browserSync.init({
+		server : {
+			baseDir: "dist"
+		},
+		ghostMode: false,
+		online: true
+	})
+	gulp.watch(config.watch.images, gulp.series('images', 'bs-reload')) // Fix
+	gulp.watch(config.watch.vendorJS, gulp.series('vendor-js', 'bs-reload'))
+	gulp.watch(config.watch.statics, gulp.series('statics'))
+	gulp.watch(config.watch.styles, gulp.series('styles'))
+	gulp.watch(config.watch.scripts, gulp.parallel('scripts', 'plugins'))
+	gulp.watch(config.watch.docs, gulp.series('docs'))
 });
 
 
 
 
 
-// > Generate production-ready 'dist' folder
-gulp.task('deploy', ['clean'], function (cb) {
-	runSequence('styles-min', ['fonts', 'images', 'vendor-js', 'statics', 'docs', 'plugins-clean', 'scripts-min'], cb);
-});
+// > Hey! Ho! Let's code!
+gulp.task('default',
+	gulp.series('build', 'work')
+);
 
 
 
 
-// > Delete Public folder
-gulp.task('clean', del.bind(null, ['dist']));
+
+// > Build production-ready 'dist' folder
+gulp.task('deploy',
+	gulp.series('clean', 'styles-min',
+		gulp.parallel('fonts', 'images', 'vendor-js', 'statics', 'docs', 'plugins-clean', 'scripts-min')
+	)
+);

@@ -1,14 +1,6 @@
-
-
-
-
-
-/*------------------------------------*\
-    $TEXTURES
-\*------------------------------------*/
-// Más estilos adicionales:
-// http://twitter.github.com/bootstrap/components.html#alerts"
-// https://github.com/twitter/bootstrap/blob/master/less/alerts.less"
+/*================================
+=            Textures            =
+================================*/
 
 
 .alert {
@@ -67,7 +59,10 @@
 		color : $alertinversetext;
 	}
 
-// alert block
+
+/*----------
+Alert Block
+----------*/
 
 	.alert--block {
 		padding-top : 14px;
@@ -89,7 +84,10 @@
 		}
 	}
 
-// BADGES ====================================================
+
+/*----------
+Badges
+----------*/
 
 .badge {
 	padding : 1px 9px 2px;
@@ -156,7 +154,51 @@
 
 // Para más gradientes: https://github.com/twitter/bootstrap/blob/master/less/mixins.less
 
-// WELL ====================================================
+
+/*----------
+Tags
+----------*/
+
+.tag {
+	position: relative;
+	display: inline-block;
+	padding : .5em 3.5em .5em 1em;
+	@include font-size(12);
+	font-weight : 600;
+	white-space : nowrap;
+	border-radius: $radius;
+	color : $grey;
+	background-color : $lightergrey;
+	@include transition(background-color .25s 0 linear);
+
+	a {
+		display: inline-block;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: rem(30);
+		height: 100%;
+		background-color: darken($lightergrey, 5%);
+		text-align: center;
+		border-top-right-radius: $radius;
+		border-bottom-right-radius: $radius;
+
+		svg {
+			width: em(20);
+		}
+
+		&:hover {
+			background-color : $lightgrey;
+			text-decoration : none;
+			cursor : pointer;
+		}
+	}
+}
+
+
+/*----------
+Wells
+----------*/
 
 .well {
 	min-height : 21px;
@@ -180,7 +222,10 @@
 		padding : 6px;
 	}
 
-// Web Colours
+
+/*----------
+Web Colors
+----------*/
 ::-moz-selection {
 	background-color : lighten($basecolor, 65%);
 	color : $basecolor;

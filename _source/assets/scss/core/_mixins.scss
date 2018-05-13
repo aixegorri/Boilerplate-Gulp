@@ -1,52 +1,54 @@
+/*==============================
+=            Mixins            =
+==============================*/
 
 
+/**
+ *
+ * Mediqueries y breakpoints: El mixin consta de 4 partes
+ *
+ * $breakpoint: Es el Brakpoint o la variable de breakpoint, las definimos en _variables.scss
+ *              las que vienen por defecto: $bp1, $bp2, $bp3, $bp4 y $bp5.
+ *
+ * $query1: max o min, dependiendo de como queremos el Mediaquery que funcione:
+ *          max-width, min-width, min-device-width, etc... - 'min' por defecto -
+ *
+ * $query2: La segunda parte del query, lo que va después de 'min' o 'max'.
+ *          -device-width, -device-height, -width etc...  - 'width' por defecto -
+ *
+ * $target: El medio. PUede ser 'all', 'screen', 'print', etc...
+ *          - '' por defecto -
+ *
+ * **************************************************************************
+ *
+ * USO:
+ *
+ * **************************************************************************
+ *
+ *	$bp1 : 45em;
+ *
+ *	.texto {
+ *		color:red;
+ * 		@include media-query-bp($bp1,min,width,screen) {
+ *			color: blue;
+ *		}
+ *	}
+ *
+ * ************
+ * Compilaría:
+ * ************
+ *
+ *	.texto {
+ *		color: red;
+ *	}
+ *	@media screen and (min-width: 45em) {
+ *		.texto {
+ *			color: blue; 
+ *		}
+ *	}
+ *
+ */
 
-
-
-/*------------------------------------*\
-    $MIXINS
-\*------------------------------------*/
-
-
-
-// Mediqueries y breakpoints: El mixin consta de 4 partes
-//
-//  $breakpoint: Es el Brakpoint o la variable de breakpoint, las definimos en _variables.scss
-//               las que vienen por defecto: $bp1, $bp2, $bp3, $bp4 y $bp5.
-//
-//  $query1: max o min, dependiendo de como queremos el Mediaquery que funcione:
-//           max-width, min-width, min-device-width, etc... - 'min' por defecto -
-//
-//  $query2: La segunda parte del query, lo que va después de 'min' o 'max'.
-//           -device-width, -device-height, -width etc...  - 'width' por defecto -
-//
-//  $target: El medio. PUede ser 'all', 'screen', 'print', etc...
-//           - '' por defecto -
-//  USO:
-//
-//  **************************************************************************
-//
-//  $bp1 : 45em;
-//
-// .texto {
-// 	color:red;
-// 	@include media-query-bp($bp1,min,width,screen) {
-// 		color: blue;
-// 	}
-// }
-//
-//  **************************************************************************
-//
-// Compilaría:
-//
-//  **************************************************************************
-// .texto {
-// color: red; }
-// @media screen and (min-width: 45em) {
-//   .texto {
-//     color: blue; } }
-//
-//
 @mixin media-query-bp($breakpoint, $query1: min, $query2: width, $target: "") {
 	$mqtarget: "";
 	// Check if media queries are supported
@@ -70,32 +72,29 @@
 }
 
 
+/*----------
+Font Size
+----------*/
 @mixin font-size($font-size: 16){
-    font-size:($font-size)*1px;
-    font-size:($font-size / $basefontsize)*1rem;
+	font-size:($font-size)*1px;
+	font-size:($font-size / $basefontsize)*1rem;
 }
 
-// flexbox, because fuck you, that's why.
+/*----------
+Flexbox
+----------*/
 @mixin flex($flex, $width) {
 	width : $width;
 	flex : $flex;
 }
 
-
-// $include flex-start(VALUE) (flex-start | flex-end | center | space-between | space-around)
-@mixin content-justify($justify) {
-	content-justify : $justify;
-}
-
-// $include flex-direction(VALUE) (row | row-reverse | column | column-reverse)
-@mixin flex-direction($direction) {
-	flex-direction : $direction;
-}
-
-
-/* Flexbox Space Between Last Row Align Left by Diana Aceves 
+/* 
+ * Flexbox Space Between Last Row Align Left
+ * by Diana Aceves
+ * 
  * https://codepen.io/diana_aceves/pen/KVGNZg?editors=1100
  */
+
 @mixin last-row-flexbox($num-columns, $width-items) {
 
    // Vamos a calcular el espacio que queda entre los elementos para usarlo de márgen en los sueltos.
@@ -109,15 +108,15 @@
 
    // Damos el margen izquierdo a todos los elementos sueltos menos al primero.
    &:nth-child(#{$num-columns}n+1):nth-last-child(-n+#{$num-cols-1}) ~ & {
-      margin-left: $margin;
+	  margin-left: $margin;
    }
 
    // Mediante el bucle, generamos todas las posibles posiciones del last-child para darle margin-right auto.
    @for $i from 1 through $num-columns - 2 {
-      $index: $num-columns - $i;
-      &:nth-child(#{$num-columns}n+#{$index}):last-child {
-         margin-right: auto;
-      }
+	  $index: $num-columns - $i;
+	  &:nth-child(#{$num-columns}n+#{$index}):last-child {
+		 margin-right: auto;
+	  }
    } 
 
    // Linter
@@ -128,8 +127,9 @@
 }
 
 
-
-// gradients
+/*----------
+Graidents
+----------*/
 @mixin horizontal($startColor : $white, $endColor : $lightergrey) {
 	background-color: $endColor;
 	background-image  : linear-gradient(left, $startColor, $endColor);
@@ -146,6 +146,11 @@
 	background-image  : linear-gradient($deg, $startColor, $endColor);
 	background-repeat : repeat-x;
 }
+
+
+/*----------
+Borders
+----------*/
 
 // .bordered(COLOR, COLOR, COLOR, COLOR);
 @mixin bordered($top-color: #eee, $right-color: #eee, $bottom-color: #eee, $left-color: #eee) {
@@ -164,6 +169,11 @@
 	background-clip : padding-box;
 }
 
+
+/*----------
+Shadows
+----------*/
+
 // .box-shadow(HORIZONTAL VERTICAL BLUR COLOR))
 @mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
 	box-shadow : $shadow;
@@ -178,6 +188,11 @@
 @mixin opacity($opacity : .5) {
 	opacity : $opacity;
 }
+
+
+/*----------
+Transforms
+----------*/
 
 // .rotate(VALUEdeg);
 @mixin rotate($deg) {
@@ -209,6 +224,10 @@
 }
 
 
+/*----------
+Backgrounds
+----------*/
+
 // .background-alpha(VALUE VALUE);
 @mixin background-alpha($color: $white, $alpha: 1) {
 	background-color : hsla(hue($color), saturation($color), lightness($color), $alpha);
@@ -224,31 +243,28 @@
 	background-clip : $clip;
 }
 
+
+/*----------
+Box size
+----------*/
+
 // .box-sizing(VALUE); (border-box, padding-box, content-box)
 @mixin box-sizing($boxsize: border-box) {
 	box-sizing : $boxsize;
 }
 
-
 // .resize(VALUE) (none, both, horizontal, vertical, inherit)
-
 @mixin resize($direction: both) {
 	resize : $direction;
 	overflow : auto;
 }
 
 // .userselect(VALUE) (all, element, none, text)
-
 @mixin user-select($select) {
 	user-select : $select;
 }
 
-
-
-
-
 // .columns(250px, 0, 24px, COLOR, solid, 1px)
-
 @mixin columns($colwidth: 250px, $colcount: 0, $colgap: 50px, $columnRuleColor: #eee, $columnRuleStyle: solid, $columnRuleWidth: 1px) {
 	column-width : $colwidth;
 	column-count : $colcount;
@@ -258,20 +274,18 @@
 	column-rule-width : $columnRuleWidth;
 }
 
+/**
+ *
+ * Creamos prefijos para todo Dios
+ *
+ * `@include vendor(border-radius, 4px);`
+ *
+ */
 
-
-
-
-//
-//Creamos prefijos para todo dios
-//
-//   `@include vendor(border-radius, 4px);`
-//
-//
 @mixin vendor($property, $value...){
-    -webkit-#{$property}:$value;
-       -moz-#{$property}:$value;
-        -ms-#{$property}:$value;
-         -o-#{$property}:$value;
-            #{$property}:$value;
+	-webkit-#{$property}:$value;
+	   -moz-#{$property}:$value;
+		-ms-#{$property}:$value;
+		 -o-#{$property}:$value;
+			#{$property}:$value;
 }

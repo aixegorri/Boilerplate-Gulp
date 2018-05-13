@@ -1,11 +1,8 @@
+/*==============================
+=            Tables            =
+==============================*/
 
 
-
-
-
-/*------------------------------------*\
-    $TABLES
-\*------------------------------------*/
 
 table {
 	width : 100%;
@@ -23,6 +20,7 @@ table {
 		@include font-size(14);
 		line-height : $baselineheight;
 		text-align : left;
+		min-width: em(100);
 	}
 
 	th {
@@ -51,12 +49,13 @@ table {
 
 	tbody tr:hover td,
 	tbody tr:hover th {
-		background-color : $tablehover;
+		// background-color : $tablehover;
 	}
 }
 
-// CONDENSED ====================================================
-
+/*----------
+Condensed
+----------*/
 .table-condensed {
 
 th,
@@ -64,8 +63,9 @@ td {
 	padding : 4px 5px; }
 }
 
-// BORDERED ====================================================
-
+/*----------
+Bordered
+----------*/
 .table-bordered {
 	border : $tableborderwidth $tableborderstyle $tableborder;
 	border-left : 0;
@@ -84,8 +84,9 @@ td {
 	}
 }
 
-// STRIPED ====================================================
-
+/*----------
+Striped
+----------*/
 .table-striped {
 
 	tbody tr:nth-child(odd) td,
@@ -93,3 +94,23 @@ td {
 		background-color : $tablestripe;
 	}
 }
+
+
+/*----------
+Responsive
+----------*/
+@media screen and (max-width: em(600)) {
+	.table-responsive {
+		width: 100%;
+		overflow: auto;
+
+		table {
+			width: auto;
+			min-width: 100%;
+		}
+		th,td {
+			white-space: nowrap;
+		}
+	}
+}
+

@@ -1,37 +1,39 @@
 {
-  "name": "boilerplate-gulp",
-  "version": "1.0.0",
-  "description": "Aixegorri Starter Kit",
-  "main": "gulpfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aixegorri/Boilerplate-Gulp.git"
-  },
-  "author": "K. Aixegorri",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/aixegorri/Boilerplate-Gulp/issues"
-  },
-  "homepage": "https://github.com/aixegorri/",
-  "devDependencies": {
-    "browser-sync": "^2.18.13",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-cached": "^1.1.1",
-    "gulp-clean-css": "^3.9.0",
-    "gulp-combine-mq": "^0.4.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-notify": "^3.0.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.1",
-    "gulp-uglify": "^3.0.0",
-    "gulp-util": "^3.0.8",
-    "run-sequence": "^2.2.0"
-  }
+	"name": "boilerplate-gulp",
+	"version": "1.0.0",
+	"description": "Aixegorri Starter Kit",
+	"main": "gulpfile.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"deploy": "gulp deploy",
+		"dev": "gulp",
+		"watch": "gulp work"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/aixegorri/Boilerplate-Gulp.git"
+	},
+	"author": "K. Aixegorri",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/aixegorri/Boilerplate-Gulp/issues"
+	},
+	"homepage": "https://github.com/aixegorri/",
+	"devDependencies": {
+		"beeper": "^1.1.1",
+		"browser-sync": "^2.18.13",
+		"del": "^3.0.0",
+		"gulp": "github:gulpjs/gulp#4.0",
+		"gulp-autoprefixer": "^4.0.0",
+		"gulp-cached": "^1.1.1",
+		"gulp-clean-css": "^3.9.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-merge-media-queries": "^0.2.1",
+		"gulp-notify": "^3.0.0",
+		"gulp-plumber": "^1.1.0",
+		"gulp-rename": "^1.2.2",
+		"gulp-sass": "^3.1.0",
+		"gulp-sourcemaps": "^2.6.1",
+		"gulp-uglify": "^3.0.0"
+	}
 }

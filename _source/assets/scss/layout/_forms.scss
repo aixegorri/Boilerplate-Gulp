@@ -1,11 +1,9 @@
+/*=============================
+=            Forms            =
+=============================*/
 
 
 
-
-
-/*------------------------------------*\
-    $FORMS
-\*------------------------------------*/
 
 form {
 	margin : 0 0 $baselineheight 0;
@@ -52,16 +50,21 @@ input,
 button,
 select,
 textarea {
-	@include font-size(14);
-	border-radius: $radius;
+	@include font-size(16);
+	border-radius: 0;
 	vertical-align : baseline;
 	*vertical-align : middle;
+	@include media-query-bp($bp2,min,width,screen) {
+	  @include font-size(14);
+   }
+   transition: all $hovertransition;
 }
 
 input,
 button,
 select,
 textarea {
+	appearance: none;
 	font-family : $basefont;
 	@include box-sizing(border-box);
 }
@@ -76,24 +79,30 @@ label {
 	input,
 	textarea,
 	select {
-	display : block;
+		display : block;
 	}
+}
+
+button {
+	background-color: transparent;
+	border: none;
 }
 
 input,
 textarea,
 select {
-	display : inline-block;
-	width : 100%;
-	padding : 4px;
-	margin-bottom : $baselineheight / 4;
-	background-color : $inputbackground;
-	border : $inputborderwidth $inputborderstyle $inputborder;
-	color : $textcolor;
+   display : inline-block;
+   width : 100%;
+   padding : rem(5) rem(10);
+   margin-bottom : $baselineheight / 4;
+   background-color : $inputbackground;
+   border : $inputborderwidth $inputborderstyle $inputborder;
+   color : $textcolor;
+   height: $baselineheight * 2;
 
-	&:hover {
-		border-color : $inputhover;
-	}
+   &:hover {
+	  border-color : $inputhover;
+   }
 }
 
 .input-mini {
@@ -102,6 +111,10 @@ select {
 
 .input-small {
 	width : 90px;
+}
+
+input[type="date"] {
+	line-height: 2em;
 }
 
 input[type="image"],
@@ -151,14 +164,19 @@ input[type="submit"] {
 
 select,
 input[type="file"] {
-	height : 28px;
-	*margin-top : 4px;
-	line-height : 28px;
+	// height : 28px;
+	// *margin-top : 4px;
+	// line-height : 28px;
 }
 
 select {
+	outline: none;
 	background-color : $inputbackground;
-	@include font-size(13);
+	background-image: url(#{$image-dir}/icons/arrow_drop_down.svg);
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-right: em(25);
+	// @include font-size(13);
 }
 
 select[multiple],
@@ -202,7 +220,10 @@ input[type="hidden"] {
 	margin-left : 10px;
 }
 
-// disabled
+
+/*----------
+Disabled
+----------*/
 
 input[disabled],
 select[disabled],
@@ -214,7 +235,10 @@ textarea[readonly] {
 	cursor : not-allowed;
 }
 
-// focus and active
+
+/*----------
+Focus & Active
+----------*/
 
 input:focus,
 textarea:focus {
@@ -230,15 +254,17 @@ select:focus {
 	@include box-shadow(none);
 }
 
-::-webkit-input-placeholder {
-	@include font-size(14);
-}
-
 input:-moz-placeholder {
-	@include font-size(14);
+	@include font-size(16);
+	@include media-query-bp($bp2,min,width,screen) {
+	  @include font-size(14);
+   }
 }
 
-// help text
+
+/*----------
+Help Text
+----------*/
 
 .help-block,
 .help-inline {
@@ -256,7 +282,10 @@ input:-moz-placeholder {
 	padding-left : 5px;
 }
 
-// .form-inline
+
+/*----------
+Form-inline
+----------*/
 
 .form-inline input,
 .form-inline textarea,
@@ -284,7 +313,10 @@ input:-moz-placeholder {
 	margin-right : 3px;
 }
 
-// .form-search
+
+/*----------
+Form-search
+----------*/
 
 .form-search input,
 .form-search textarea,
@@ -318,6 +350,35 @@ input:-moz-placeholder {
 	margin-right : 3px;
 }
 
+.form-search {
+	.form-group {
+		position: relative;
+
+		input[type="search"] {
+			padding-right: em(50);
+			margin-bottom: 0;
+		}
+		button {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: em(50);
+			height: $baselineheight * 2;
+			padding : rem(5) rem(10);
+			
+			svg {
+				width: em(20);
+				fill: $grey {
+				}
+			}
+		}
+	}
+}
+
+
+/*----------
+Required
+----------*/
 
 /**
 * Validamos los formularios que son "required":
@@ -325,10 +386,51 @@ input:-moz-placeholder {
 */
 
 input:required:focus:invalid {
-  	background-color:lighten($color-alert, 5%);
-  	border:1px solid $color-alert;
+	background-color:lighten($color-alert, 5%);
+	border:1px solid $color-alert;
 }
 input:required:focus:valid {
-  	background-color:lighten($color-success, 40%);
-  	border:1px solid $color-success;
+	background-color:lighten($color-success, 40%);
+	border:1px solid $color-success;
 }
+
+label .required {
+	color: $color-error;
+	font-size: .9em;
+}
+
+
+/*----------
+Icon input
+----------*/
+
+/**
+* Iconos dentro del campo input
+*/
+
+.icon-input {
+	position: relative;
+	margin-bottom : $baselineheight / 4;
+	
+	input {
+		position: relative;
+		margin-bottom : 0;
+		padding-left: em(45);
+	}
+	figure {
+		position: absolute;
+		z-index: 1;
+		display: block;
+		height: $baselineheight * 2;
+		margin-bottom: 0;
+		padding: .8em;
+		color: $grey;
+	}
+	svg {
+		height: em(20);
+		width: em(20);
+		vertical-align: text-top;
+		fill: $darkgrey;
+	}
+}
+
