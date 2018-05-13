@@ -1,0 +1,332 @@
+/*==================================
+=            Navigation            =
+==================================*/
+
+
+.nav {
+	>li {
+		position: relative;
+		display: inline-block;
+
+		>a {
+			position: relative;
+			padding: $navitempadding;
+			&:hover,
+			&:focus {
+				text-decoration: none;
+				background-color: $bordercolor;
+			}
+		}
+	}
+	.dropdown>ul {
+		display: none;
+	}
+}
+
+
+/**
+*
+* .nav--fit extiende a .nav y alarga la navegación para que ocupe el 100% de su contenedor
+*
+*	<ul class="nav nav--fit">
+*		<li><a href="index.html">Home</a></li>
+*		<li><a href="about.html">About us</a></li>
+*		<li><a href="products.html">Products</a></li>
+*		<li><a href="services.html">Services</a></li>
+*		<li><a href="contact.html">Contact us</a></li>
+*	</ul>
+*
+*/
+.nav--fit {
+	display: table;
+	width: 100%;
+
+	>li {
+		display: table-cell;
+
+		>a {
+			display: block;
+		}
+	}
+}
+
+
+/**
+*
+* .nav--tabs extiende a .nav y crea la base para una navegación en pestañas.
+*
+*		 <ul class="nav nav--tabs">
+*			<li><a href="index.html">Home</a></li>
+*			<li><a href="about.html">About us</a></li>
+*			<li><a href="products.html">Products</a></li>
+*			<li><a href="services.html">Services</a></li>
+*			<li><a href="contact.html">Contact us</a></li>
+*		</ul>
+*
+*/
+.nav-tabs {
+	border-bottom: 2px solid $navtabsbordercolor;
+	margin-bottom: 0;
+	padding: 0;
+	background-color: $white;
+	list-style: none;
+
+	>li {
+		// Make the list-items overlay the bottom border
+		margin-bottom: -1px;
+		position: relative;
+
+		// Actual tabs (as links)
+		>a {
+			display: block;
+			line-height: $baselineheight;
+			outline: none;
+			color: $grey;
+			&:hover {
+				background-color: transparent;
+				color: $darkgrey;
+				&:after {
+					transform: scale(1);
+				}
+			}
+			&:after {
+				position: absolute;
+				content: '';
+				height: 2px;
+				width: 100%;
+				left: 0;
+				bottom: -1px;
+				background-color: $basecolor;
+				transition: all $hovertransition ease;
+				transform: scale(0);
+			}
+		} 
+		// Active state, and its :hover to override normal :hover
+		&.active > a {
+			background-color: transparent;
+
+			&,
+			&:hover,
+			&:focus {
+				color: $basecolor;
+				border: none;
+				cursor: default;
+				&:after {
+					transform: scale(1);
+				}
+			}
+		}
+	}
+}
+
+
+/*----------
+Tabbable Tabs
+----------*/
+
+/**
+ * Hide tabbable panes to start, show them when `.active`
+ */
+
+.tab-content {
+	background-color: $white;
+	padding: 1rem;
+
+	>.tab-pane {
+		padding: .5em 0;
+		display: none;
+	}
+	>.active {
+		display: block;
+	}
+}
+
+/*----------
+Hamburger Nav
+----------*/
+/**
+ * Icono para menús de hamburguesa. ¡Ñam!
+ */
+
+.navbar-toggle {
+	cursor: pointer;
+	width: 25px;
+	height: 13px;
+	line-height: 13px;
+	margin: auto 0;
+	i {
+		background-color: $grey;
+		border-radius: 4px;
+		content: '';
+		display: block;
+		width: 100%;
+		height: 2px;
+	}
+	i:nth-child(1) {
+		-webkit-animation: outT 0.8s backwards;
+		animation: outT 0.8s backwards;
+		-webkit-animation-direction: reverse;
+		animation-direction: reverse;
+	}
+	i:nth-child(2) {
+		margin: 3px 0;
+		-webkit-animation: outM 0.8s backwards;
+		animation: outM 0.8s backwards;
+		-webkit-animation-direction: reverse;
+		animation-direction: reverse;
+	}
+	i:nth-child(3) {
+		-webkit-animation: outBtm 0.8s backwards;
+		animation: outBtm 0.8s backwards;
+		-webkit-animation-direction: reverse;
+		animation-direction: reverse;
+	}
+	&.active {
+		i:nth-child(1) {
+			-webkit-animation: inT 0.8s forwards;
+			animation: inT 0.8s forwards;
+		}
+		i:nth-child(2) {
+			-webkit-animation: inM 0.8s forwards;
+			animation: inM 0.8s forwards;
+		}
+		i:nth-child(3) {
+			-webkit-animation: inBtm 0.8s forwards;
+			animation: inBtm 0.8s forwards;
+		}
+	}
+}
+
+@-webkit-keyframes inM {
+	50% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(45deg);
+	}
+}
+
+@keyframes inM {
+	50% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(45deg);
+	}
+}
+
+@-webkit-keyframes outM {
+	50% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(45deg);
+	}
+}
+
+@keyframes outM {
+	50% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(45deg);
+	}
+}
+
+@-webkit-keyframes inT {
+	0% {
+		-webkit-transform: translateY(0px) rotate(0deg);
+	}
+	50% {
+		-webkit-transform: translateY(5px) rotate(0deg);
+	}
+	100% {
+		-webkit-transform: translateY(5px) rotate(135deg);
+	}
+}
+
+@keyframes inT {
+	0% {
+		transform: translateY(0px) rotate(0deg);
+	}
+	50% {
+		transform: translateY(5px) rotate(0deg);
+	}
+	100% {
+		transform: translateY(5px) rotate(135deg);
+	}
+}
+
+@-webkit-keyframes outT {
+	0% {
+		-webkit-transform: translateY(0px) rotate(0deg);
+	}
+	50% {
+		-webkit-transform: translateY(5px) rotate(0deg);
+	}
+	100% {
+		-webkit-transform: translateY(5px) rotate(135deg);
+	}
+}
+
+@keyframes outT {
+	0% {
+		transform: translateY(0px) rotate(0deg);
+	}
+	50% {
+		transform: translateY(5px) rotate(0deg);
+	}
+	100% {
+		transform: translateY(5px) rotate(135deg);
+	}
+}
+
+@-webkit-keyframes inBtm {
+	0% {
+		-webkit-transform: translateY(0px) rotate(0deg);
+	}
+	50% {
+		-webkit-transform: translateY(-5px) rotate(0deg);
+	}
+	100% {
+		-webkit-transform: translateY(-5px) rotate(135deg);
+	}
+}
+
+@keyframes inBtm {
+	0% {
+		transform: translateY(0px) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-5px) rotate(0deg);
+	}
+	100% {
+		transform: translateY(-5px) rotate(135deg);
+	}
+}
+
+@-webkit-keyframes outBtm {
+	0% {
+		-webkit-transform: translateY(0px) rotate(0deg);
+	}
+	50% {
+		-webkit-transform: translateY(-5px) rotate(0deg);
+	}
+	100% {
+		-webkit-transform: translateY(-5px) rotate(135deg);
+	}
+}
+
+@keyframes outBtm {
+	0% {
+		transform: translateY(0px) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-5px) rotate(0deg);
+	}
+	100% {
+		transform: translateY(-5px) rotate(135deg);
+	}
+}
+
+

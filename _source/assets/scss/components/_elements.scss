@@ -1,13 +1,21 @@
+/*================================
+=            Elements            =
+================================*/
 
 
 
-
-
-/*------------------------------------*\
-    $ELEMENTS
-\*------------------------------------*/
-
-
+a {
+	transition: all $hovertransition ease-in;
+	
+	&:focus {
+		outline: none;
+	}
+}
+@media screen and (max-width: em(600)) {
+	a {
+		word-wrap: break-word;
+	}
+}
 hr {
 	clear : both;
 	display : block;
@@ -16,6 +24,16 @@ hr {
 	height : 1px;
 	border : 0;
 	border-top : 1px solid $bordercolor;
+
+	&.separator--floral {
+		height: em(30);
+		width: 100%;
+		margin: 5em auto 0;
+		border: none;
+		background-image: url("#{$image-dir}/layout/separater.png");
+		background-repeat: no-repeat;
+		background-position: center center; 
+	}
 }
 
 
@@ -23,9 +41,9 @@ hr {
 
 
 
-/*------------------------------------*\
-    $ELEMENTS-IMAGES
-\*------------------------------------*/
+/*----------
+Images
+----------*/
 img {
 	max-width : 100%;
 	border-width : 0;
@@ -51,11 +69,11 @@ img {
 
 
 
-/*------------------------------------*\
-    $ELEMENTOS-FIGURE
-\*------------------------------------*/
+/*----------
+Figure
+----------*/
 figure {
-	margin-bottom : $baselineheight;
+	margin-bottom : 0;
 
 	img {
 		margin-bottom : $baselineheight / 4;
@@ -68,4 +86,17 @@ figure {
 		font-style : italic;
 		color : $grey;
 	}
+}
+
+
+
+
+/*----------
+SVG
+----------*/
+svg {
+	vertical-align: middle;
+	width: 100%;
+	height: 100%;
+	transition: all $hovertransition ease-in;
 }

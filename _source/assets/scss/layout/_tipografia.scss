@@ -1,14 +1,12 @@
+/*==================================
+=            Tipografía            =
+==================================*/
 
 
 
-
-
-/*------------------------------------*\
-    $TIPOGRAFÍA
-\*------------------------------------*/
-
-
-// HEADINGS ====================================================
+/*----------
+Headings
+----------*/
 
 h1,
 h2,
@@ -17,7 +15,7 @@ h4,
 h5,
 h6 {
 	margin : 0;
-	font-family : $baseheadingfont;
+	font-family : $basefont;
 	font-weight : $baseheadingfontweight;
 	color : $baseheadingfontcolor;
 	text-rendering : optimizelegibility;
@@ -77,19 +75,20 @@ h6,
 
 
 
-// TYPOGRAFÍA ====================================================
+/*----------
+Text
+----------*/
 
 p,
 ol,
 ul,
 dl,
 address {
-	margin-bottom : $baselineheight;
 	line-height : $baselineheight;
-}
-
-.intro {
- 	font-weight: bold;
+	
+	&+& {
+		margin-top: $baselineheight;
+	}
 }
 
 small {
@@ -101,6 +100,12 @@ ul,
 ol {
 	margin : 0 0 $baselineheight 0;
 	padding : 0 0 0 $gutterwidth;
+
+	&.unstyled {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
 }
 
 li ul,
@@ -108,7 +113,10 @@ li ol {
 	margin : 0;
 }
 
-// blockquote
+
+/*----------
+Blockquote
+----------*/
 
 blockquote  {
 	margin : 0 0 $baselineheight 0;
@@ -139,11 +147,14 @@ cite {
 	font-style : normal;
 }
 
-// definition lists
+
+/*----------
+Lists
+----------*/
 
 dl,
 dd {
-	margin-bottom : $baselineheight;
+	margin-bottom : .2rem;
 }
 
 dt {
@@ -164,7 +175,10 @@ dt {
 	}
 }
 
-// text-level
+
+/*----------
+Text Level
+----------*/
 
 abbr[title] {
 	border-bottom : 1px dotted $bordercolor;

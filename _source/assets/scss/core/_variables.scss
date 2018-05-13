@@ -1,6 +1,9 @@
-/*------------------------------------*\
-    $VARIABLES
-\*------------------------------------*/
+/*=================================
+=            Variables            =
+=================================*/
+
+
+
 /**
  *
  * Definimos y configuramos las variables CSS que vamos a utilizar
@@ -8,126 +11,126 @@
  */
 
 
-/*------------------------------------*\
-    $BREAKPOINTS
-\*------------------------------------*/
+/*----------
+Breakpoints
+----------*/
+
 /**
  * "Start with the small screen first, then expand until it looks like shit. Time to insert a breakpoint!"
  */
 
-$bp0 : 25em;     // Mobile S
-$bp1 : 30em;     // Mobile L
-$bp2 : 37.5em;   // Tablet S
-$bp3 : 48em;     // Tablet L
-$bp4 : 56.25em;  // Laptop S
-$bp5 : 68.75em;  // Laptop L
+$bp0 : 25em; 	 // Mobile S
+$bp1 : 30em;	 // Mobile
+$bp2 : 37.5em;  // Tablet S
+$bp3 : 48em; 	 // Tablet L
+$bp4 : 56.25em; // Laptop S
+$bp5 : 68.75em; // Laptop L
 $bp-handheld : handheld; // Touch Devices
 
 
+/*----------
+Border-box
+----------*/
 
-
-
-/*------------------------------------*\
-    $BORDER-BOX
-\*------------------------------------*/
 /**
  * Quieres todos los elementos tener un box-sizing:border-box?
  * paulirish.com/2012/box-sizing-border-box-ftw ?
  */
+
 $border-box: true!default;
 
 
+/*----------
+Images Path
+----------*/
 
-
-
-/*------------------------------------*\
-    $IMAGE-DIR
-\*------------------------------------*/
 /**
  * Con agregar esta variable a las imágenes declaradas en CSS apañamos:
  */
-$image-dir: "../img";
+$image-dir: '../img';
 
- //Use: background-image:url("#{$image-dir}/btn.jpg");
-
-
+ //Use: background-image:url('#{$image-dir}/btn.jpg');
 
 
-
-/*------------------------------------*\
-    $LAYOUT
-\*------------------------------------*/
+/*----------
+Layout
+----------*/
 /**
  * Definimos elementos constantes del layout
  */
+
 $baselineheight :     1.5em;
 $baseline :           $baselineheight;
 $gutterwidth :        24px;
 $pagemaxwitdh :       80%;
-$radius :             2px;
+$radius :             3px;
 $hovertransition :    .3s;
 $animationtime :      .8s;
 
 
+/*----------
+Fonts
+----------*/
 
-
-
-
-/*------------------------------------*\
-    $FONT-FACE
-\*------------------------------------*/
 /**
  * Definimos las fuentes a utilizar:
  * $basefont para todos los textos inline
  * $altfont para textos alternativos, como citas, intro, etc...
  * $codefont para código
  */
-$basefont : "Helvetica Neue", Helvetica, Arial, sans-serif;
+ 
+$basefont : Helvetica, Arial, sans-serif;
 $altfont : Georgia, Times, "Times New Roman";
 $codefont : "Courier New", monospace;
 $baseheadingfont : inherit;
 
-$baseheadingfontweight : bold;
+$font_thin: 	100;
+$font_light: 	300;
+$font_regular: 	400;
+$font_medium: 	500;
+$font_semibold: 600;
+$font_bold: 	700;
+$font_black: 	900;
+
+$baseheadingfontweight : 600;
 $baseheadingfontcolor : inherit;
 
 $altlineheight : 1.35em;
 
 
+/*----------
+Sizes
+----------*/
 
-
-
-
-/*------------------------------------*\
-    $TAMAÑOS
-\*------------------------------------*/
 /**
  * Definimos las fuentes a utilizar:
  * $basefont para todos los textos inline
  * $altfont para textos alternativos, como citas, intro, etc...
  * $codefont para código
  */
+
 $basefontsize :      16;
 
 
+/*----------
+Colors
+----------*/
 
-
-
-/*------------------------------------*\
-    $COLORS
-\*------------------------------------*/
 /**
  * Brand stuff
  */
-$basecolor      : rgb(255,148,77); // Zumo de naranja
+
+$basecolor      : rgb(189,13,46); // Red
 $basecolor-light: lighten($basecolor, 5%);
-$secondary      : rgb(219,216,121); // Pistacho
-$bordercolor    : lighten($secondary, 50); // Color Bordes
-$compcolor      : rgb(216,240,227); // Complementario
+$secondary      : rgb(10,10,10); // Black
+$bordercolor    : lighten($secondary, 50); // Verde Bordes
+$compcolor      : rgb(216,240,227); //
 
 /**
  * Escala de grises
  * A veces no queremos que el negro sea "negro" o el blanco "blanco", puedes cambiarlos.
  */
+
 $black 			: rgb(0,0,0);
 $superdark  	: lighten($black, 10%);
 $darkergrey 	: lighten($black, 15%);
@@ -137,35 +140,33 @@ $lightgrey 		: lighten($black, 75%);
 $lightergrey 	: lighten($black, 90%);
 $white 			: rgb(255,255,255);
 
-// Web
-$background: 		$white;
-$textcolor: 		$darkergrey;
-$textcolor-strong:	$black;
+// Elementos
+$background		  : $white;
+$textcolor		  : $darkergrey;
+$textcolor-light  : darken($grey, 5%);
+$textcolor-strong : $black;
 
-// Links  //////////////////////
+// Links
 $linkcolor 		    : $basecolor;
 $linkcolorhover 	: darken($linkcolor, 10);
-$linkcolorvisited   : $basecolor;
+$linkcolorvisited  	: $basecolor;
 $linkcolorfocus 	: darken($linkcolorvisited, 10);
 
 
+/*----------
+Textures
+----------*/
 
-
-
-
-/*------------------------------------*\
-    $TEXTURAS
-\*------------------------------------*/
 /**
  * Definimos Colores y elementos de popups, mensajes de alerta, etc...
  */
+
 $color-alert 	: rgb(252,228,207);
 $color-error 	: rgb(218,79,73);
 $color-info 	: rgb(165,221,223);
 $color-inverse 	: invert($secondary);
 $color-success 	: rgb(91,183,91);
 $color-warning 	: $color-error;
-
 
 // Texturas de popups
 $alertbordercolor	: darken($color-alert, 20%);
@@ -199,15 +200,16 @@ $alertwarningborder : lighten($color-warning, 20%);
 $alertwarningtext 	: darken($color-warning, 20%);
 
 /* Colores sociales -> son los colores corporativos, pero cambiadlos
- * si hace falta. (también podéis añadir más)  ///////////////////////
+ * si hace falta. (también podéis añadir más)
  */
+
 $fb :rgb(59, 89, 182);
 $tw :rgb(64,153,255);
 $googleplus :rgb(221, 75, 57);
 $pinterest :rgb(203, 32, 39);
 $skype :rgb(18,165,244);
 $spotify :rgb(129,183,26);
-$instagram:#4E433C;
+$instagram:#F5436D;
 $tumblr: #2B4964;
 $vimeo: #86B32D;
 $soundcloud: #f76600;
@@ -216,20 +218,19 @@ $linkedin: #4875B4;
 $flickr: #FE0883;
 $foursquare: #8FD400;
 
-
-// badges
+// Badges
 $badgebackground    : $basecolor;
 $badgecolor         : $textcolor;
 
-// botones
-$buttonbackground   : $basecolor-light;
-$buttonbordercolor  : darken($buttonbackground, 10%);
+// Botones
+$buttonbackground   : transparent;
+$buttonbordercolor  : $textcolor;
 $buttonbottombordercolor : darken($buttonbordercolor, 10%);
-$buttoncolor        : $black;
+$buttoncolor        : $white;
 $buttonborderwidth  : 1px;
 $buttonborderstyle  : solid;
 
-// boxes (well)
+// Boxes (well)
 $wellbackground     : lighten($basecolor, 75%);
 $wellbordercolor    : darken($wellbackground, 20%);
 $wellborderwidth    : 1px;
@@ -237,7 +238,7 @@ $wellborderstyle    : solid;
 $wellshadow         : darken($wellbackground, 10%);
 $wellshadowblur     : 10px;
 
-// tablas
+// Tablas
 $tablebackground    : transparent;
 $tablestripe        : lighten($basecolor, 60%);
 $tablehover         : lighten($basecolor, 50%);
@@ -245,17 +246,17 @@ $tableborder        : lighten($basecolor, 40%);
 $tableborderwidth   : 1px;
 $tableborderstyle   : solid;
 
-// formularios
+// Formularios
 $inputbackground    : $white;
 $inputborder        : $lightgrey;
 $inputborderwidth   : 1px;
 $inputborderstyle   : solid;
-$inputhover         : lighten($black, 50%);
-$inputfocus         : $basecolor, 40%;
+$inputhover         : $basecolor;
+$inputfocus         : $basecolor;
 $placeholdercolor   : $lightergrey;
 
 
 // Navegación
 $navitembordercolor    : $bordercolor;
 $navitempadding        : $gutterwidth / 2;
-$navtabsbordercolor    : $bordercolor;
+$navtabsbordercolor    : $lightergrey;

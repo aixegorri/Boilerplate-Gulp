@@ -1,6 +1,7 @@
-/*------------------------------------*\
-    $STYLES
-\*------------------------------------*/
+/*=========================================================
+=            Archivo donde cargar los partials            =
+=========================================================*/
+
 /**
  * Aquí incluímos todos los módulos (archivos .scss) que se can
  * a compilar en el CSS definitivo: /css/styles.css.
@@ -8,51 +9,81 @@
  * o comentes su inclusión para no tener estilos innecesarios en tu CSS final
  * y optimizar lo máximo posible.
  */
+
 $media-queries-supported : true;
 
-@import "content.scss";
-
-/**
- * Core
- * 
- */
-@import "core/variables.scss";
-@import "core/functions.scss";
-@import "core/mixins.scss";
-@import "core/placeholders.scss";
-@import "core/icons.scss";
-
-/**
- * Vendor
- * 
- */
+// @import "content.scss";
 
 
-/**
- * Components
- * 
- */
-@import "components/reset.scss";
-@import "components/fonts.scss";
-@import "components/links.scss";
-@import "components/tables.scss";
-@import "components/buttons.scss";
-@import "components/elements.scss";
-@import "components/tipografia.scss";
-@import "components/navigation.scss";
-@import "components/pagination.scss";
-@import "components/forms.scss";
+/*----------
+Core
+----------*/
+@import 'core/variables';
+@import 'core/functions';
+@import 'core/mixins';
+@import 'core/placeholders';
+@import 'core/icons';
 
-/**
- * Layout
- * 
- */
-@import "layout/site.scss";
 
-/**
- * Important!
- * 
- */
-@import "components/textures.scss";
+/*----------
+Vendors
+----------*/
+// @import 'vendors/file-name';
 
+
+/*----------
+Base
+----------*/
+@import 'base/reset';
+// @import 'base/normalize';
+@import 'base/fonts';
+
+
+/*----------
+Layout
+----------*/
+@import 'layout/navigation';
+//@import 'layout/grid';
+//@import 'layout/header';
+//@import 'layout/footer';
+//@import 'layout/sidebar';
+@import 'layout/forms';
+@import 'layout/links';
+@import 'layout/textures';
+@import 'layout/tipografia';
+
+
+/*----------
+Components
+----------*/
+@import 'components/animations';
+@import 'components/elements';
+@import 'components/buttons';
+@import 'components/pagination';
+@import 'components/tables';
+@import 'components/modals';
+//@import 'components/carousel';
+//@import 'components/cover';
+//@import 'components/dropdown';
+
+
+/*----------
+Pages
+----------*/
+@import 'pages/site';
+// @import 'pages/home';
+
+
+/*----------
+Themes
+----------*/
+//@import 'themes/theme';
+//@import 'themes/admin';
+
+
+
+
+/*----------
+Debug
+----------*/
 // @import "core/debug.scss";  // Utilizado para comprobar que el marcado HTML no contenga errores

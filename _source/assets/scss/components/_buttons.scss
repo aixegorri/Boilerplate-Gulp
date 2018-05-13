@@ -1,15 +1,10 @@
+/*===============================
+=            Buttons            =
+===============================*/
 
-
-
-
-
-/*------------------------------------*\
-    $BOTONES
-\*------------------------------------*/
 /*
  * Definimos los botones y sus variantes
  */
-
 
  /**
  * .btn es la clase principal para definir un botón
@@ -20,39 +15,46 @@
 	color : $textcolor;
 	text-align : center;
 	vertical-align : middle;
-	font-size: 100%;
+	font-size: .9em;
+	text-transform: uppercase;
 	white-space:nowrap;
 	background-color : $buttonbackground;
-	border : none;
-	font-weight: bold;
+	border: $buttonborderwidth $buttonborderstyle $buttonbordercolor;
+	font-weight: $font_semibold;
 	cursor : pointer;
 	margin:0;
-	padding-top:   0;
-   	padding-bottom:0;
-   	padding-right:1em;
-   	padding-left: 1em;
+	padding-top:   .5em;
+	padding-bottom:.5em;
+	padding-right: 3em;
+	padding-left: 	3em;
 	border-radius: $radius;
 
 	/**
- 	* Nadie quiere un botón con texto subrayado cuando
- 	* hacemos hover.
- 	*/
+	* Nadie quiere un botón con texto subrayado cuando
+	* hacemos hover.
+	*/
 
 	&:hover {
-		text-decoration : none;
+	   text-decoration: none;
+	   background-color: $basecolor;
+	   border-color: $basecolor;
+	   color: $white;
 	}
+
 	&:active,
-    &:focus{
-        outline:none;
-    }
-    &:visited {
-	color : $textcolor;
+	&:focus {
+	   outline: none;
 	}
+
+	// &:visited {
+	//    color: $textcolor;
+	// }
 }
 
-/*------------------------------------*\
-    $BOTONES-VARIANTES
-\*------------------------------------*/
+/*----------
+Botones Variantes
+----------*/
+
 /**
  * Variantes de los botones: color para dar sensaciones.
  *
@@ -71,7 +73,7 @@ input[type="submit"].btn:hover {
 * Botón no disponible
 */
 .btn--disabled {
-    @include opacity(.5);
+	@include opacity(.5);
 	cursor : default;
 }
 
@@ -108,22 +110,61 @@ input[type="submit"].btn:hover {
 /**
 * Botón principal
 */
-
 .btn--primary {
-	background-color: $basecolor;
-	color: $white;
+	background-color: transparent;
+	border-color: $basecolor;
+	color: $textcolor;
+
 	&:hover {
-		color : lighten($basecolor, 40%);
-	}
-	&:visited {
-		color : darken($basecolor, 40%);
+		color: $white;
+		background-color: $basecolor;
 	}
 }
 
 /**
+* Secondary Button
+*/
+.btn--secondary {
+	background-color: $darkgrey;
+	border-color: $darkgrey;
+	color: $white;
+	font-weight: 500;
+
+	&:hover {
+		background-color: $superdark;
+		border-color: $superdark;
+		color: $white;
+	}
+	&:visited {
+		color: $white;
+	}
+}
+
+/**
+* Terciary Button
+*/
+.btn--terciary {
+	background-color: $basecolor;
+	border-color: $basecolor;
+	padding: calc(.5em - 1px) calc(3em - 1px); 
+	border-width: 2px;
+	color: $white;
+	font-weight: 500;
+
+	&:hover {
+		background-color: transparent;
+		color: $basecolor;
+	}
+	&:visited {
+		color: $white;
+	}
+}
+
+
+
+/**
 * Botón de OK
 */
-
 .btn--success {
 	background-color: $color-success;
 	color : darken($color-success, 40%);
@@ -160,38 +201,38 @@ input[type="submit"].btn:hover {
 
 
 
-/*------------------------------------*\
-    $BOTONES-TAMAÑOS
-\*------------------------------------*/
+/*----------
+Botones tamaños
+----------*/
 /**
  * Variantes de los botones por tamaño.
  *
  */
 
 .btn--mini{
-    padding-right:0.5em;
-    padding-left: 0.5em;
-    line-height:1.5;
+	padding-right:0.5em;
+	padding-left: 0.5em;
+	line-height:1.5;
 }
 
 .btn--small{
-    padding-right:1.5em;
-    padding-left: 1.5em;
-    line-height:2;
+	padding-right:1.5em;
+	padding-left: 1.5em;
+	line-height:2;
 }
 
 .btn--large{
-    padding-right:3em;
-    padding-left: 3em;
-    line-height:3;
+	padding-right:3em;
+	padding-left: 3em;
+	line-height:3;
 }
 
 
 
 
-/*------------------------------------*\
-    $BOTONES-GRUPOS
-\*------------------------------------*/
+/*----------
+Botones grupos
+----------*/
 /**
  * Con esta clase podemos agrupar los botones
  * en grupos horizontales.
