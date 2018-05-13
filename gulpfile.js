@@ -232,33 +232,37 @@ gulp.task('build',
 
 
 
-// > Create a development server with BrowserSync
-gulp.task('default',
-	gulp.series('build', function() {
-		browserSync.init({
-			server : {
-				baseDir: "dist"
-			},
-			ghostMode: false,
-			online: true
-		});
-		gulp.watch(config.watch.images, gulp.series('images', 'bs-reload')); // Fix
-		gulp.watch(config.watch.vendorJS, gulp.series('vendor-js', 'bs-reload'));
-		gulp.watch(config.watch.statics, gulp.series('statics'));
-		gulp.watch(config.watch.styles, gulp.series('styles'));
-		gulp.watch(config.watch.scripts, gulp.parallel('scripts', 'plugins'));
-		gulp.watch(config.watch.docs, gulp.series('docs'));
+// > Create a development server with BrowserSync & watch files
+gulp.task('work', function() {
+	browserSync.init({
+		server : {
+			baseDir: "dist"
+		},
+		ghostMode: false,
+		online: true
 	})
+	gulp.watch(config.watch.images, gulp.series('images', 'bs-reload')) // Fix
+	gulp.watch(config.watch.vendorJS, gulp.series('vendor-js', 'bs-reload'))
+	gulp.watch(config.watch.statics, gulp.series('statics'))
+	gulp.watch(config.watch.styles, gulp.series('styles'))
+	gulp.watch(config.watch.scripts, gulp.parallel('scripts', 'plugins'))
+	gulp.watch(config.watch.docs, gulp.series('docs'))
+});
+
+
+
+
+
+// > Hey! Ho! Let's code!
+gulp.task('default',
+	gulp.series('build', 'work')
 );
 
 
 
 
 
-// // > Build production-ready 'dist' folder
-// gulp.task('deploy', ['clean'], function (cb) {
-// 	runSequence('styles-min', ['fonts', 'images', 'vendor-js', 'statics', 'docs', 'plugins-clean', 'scripts-min'], cb);
-// });
+// > Build production-ready 'dist' folder
 gulp.task('deploy',
 	gulp.series('clean', 'styles-min',
 		gulp.parallel('fonts', 'images', 'vendor-js', 'statics', 'docs', 'plugins-clean', 'scripts-min')
