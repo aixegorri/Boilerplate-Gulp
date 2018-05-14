@@ -19,6 +19,7 @@ var reload       = browserSync.reload;
 var rename       = require('gulp-rename');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
+var stylelint    = require('gulp-stylelint');
 var uglify       = require('gulp-uglify');
 
 
@@ -298,3 +299,18 @@ gulp.task('deploy',
 		gulp.parallel('fonts', 'images-min', 'vendor-js', 'statics', 'docs-min', 'plugins-clean', 'scripts-min')
 	)
 );
+
+
+
+
+
+// > Check CSS Code
+gulp.task('lint-css', function(){
+    return gulp.src(config.watch.styles)
+        .pipe(stylelint({
+        	reporters: [{
+	    		formatter: 'string', 
+	    		console: true
+	    	}]
+        }))
+});
