@@ -159,7 +159,7 @@ gulp.task('styles-min', function(cb) {
 	return gulp.src(config.styles.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(sass({
-			outputStyle: 'compressed',
+			outputStyle: 'expanded',
 		}))
 		.pipe(mergeMq({
 			log: true
@@ -171,6 +171,7 @@ gulp.task('styles-min', function(cb) {
 			],
 			cascade: false
 		}))
+		.pipe(gulp.dest(config.styles.dest))
 		.pipe(cssminifiy())
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest(config.styles.dest))
@@ -293,7 +294,7 @@ gulp.task('default',
 
 // > Build production-ready 'dist' folder
 gulp.task('deploy',
-	gulp.series('clean', 'styles', 'styles-min',
-		gulp.parallel('fonts', 'images-min', 'vendor-js', 'statics', 'docs', 'plugins-clean', 'scripts-min')
+	gulp.series('clean', 'styles-min',
+		gulp.parallel('fonts', 'images-min', 'vendor-js', 'statics', 'docs-min', 'plugins-clean', 'scripts-min')
 	)
 );
