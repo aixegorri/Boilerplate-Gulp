@@ -139,7 +139,12 @@ gulp.task('docs-min', function(cb) {
 gulp.task('styles', function(cb) {
 	return gulp.src(config.styles.src)
 		.pipe(sourcemaps.init())
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(plumber({
+			errorHandler: notify.onError({
+				message: 'Error: <%= error.message %>',
+				title: 'Error on CSS'
+			})
+		}))
 		.pipe(gulpif(
 			lintcss, stylelint({
 				reporters: [{
@@ -174,7 +179,12 @@ gulp.task('styles', function(cb) {
 // > Process SASS/SCSS files to generate final minified CSS files in 'dist' folder
 gulp.task('styles-min', function(cb) {
 	return gulp.src(config.styles.src)
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(plumber({
+			errorHandler: notify.onError({
+				message: 'Error: <%= error.message %>',
+				title: 'Error on CSS'
+			})
+		}))
 		.pipe(sass({
 			outputStyle: 'expanded',
 		}))
