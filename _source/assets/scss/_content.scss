@@ -8,6 +8,7 @@
  * Content....................... Esto que lees
 /**
 
+
 /**
  * Core
 /**
@@ -22,51 +23,88 @@
 
  * Icons......................... Font icons
 
+
 /**
- * Vendor
+ * Vendors
 /** 
 
 
 /**
- * Components
-/**
- 
+ * Base
+/** 
+
  * Reset......................... Reinicio de valores CSS
 
+ * Normalize..................... Normalización de valores CSS por defecto de los diferentes navegadores
+
  * Fonts......................... Fuentes que vamos a importar
-
- * Links......................... Formas y estilos de los links
-
- * Tables........................ Estilos de las tablas
-
- * Buttons....................... Estilos de Botones, skins y variantes
-
- * Elements...................... Elementos varios como Imagen, HR, etc...
-
- * Tipografía.................... Encabezados, small, párrafos, listas, etc...
-
- * Navigation.................... Una navegación, por si quieres usar esta y no la tuya propia
-
- * Pagination.................... Estilos básicos para las paginaciones
-
- * Forms......................... Estilos de todos los elementos de formularios y sus variantes
 
 
 /**
  * Layout
 /**
 
- * Site.......................... Aquí escribes tus estilos para la web se vea como tu quieres ;)
+ * Elements...................... Elementos varios como IMG, HR, etc...
+
+ * Navigation.................... Una navegación, por si quieres usar esta y no la tuya propia
+
+ * Grid.......................... Patrón del sistema de rejilla
+
+ * Header........................ Cabecera del site
+
+ * Footer........................ Pie del site
+
+ * Sidebar....................... Barra lateral
+
+ * Forms......................... Estilos de todos los elementos de formularios y sus variantes
+
+ * Links......................... Formas y estilos de los links
+
+ * Tipography.................... Encabezados, small, párrafos, listas, etc...
+
+ * Textures...................... Alerts, Badges, Wells...
 
 
 /**
- * Important!
+ * Components
 /**
 
- * Textures...................... Badges, cajas y wells
+ * Animations.................... Efectos de animación
 
- * Breakpoints................... Importamos breakpoints basados en las variables @bp$
+ * Buttons....................... Estilos de Botones, skins y variantes
 
+ * Pagination.................... Estilos básicos para las paginaciones
+
+ * Tables........................ Estilos de las tablas
+
+ * Modals........................ Estilos de las ventanas modales
+ 
+ * Carousel...................... Estilos para sliders, galerías de imágenes...
+
+ * Dropdown...................... Estilos de menús desplegables
+
+
+/**
+ * Pages
+/**
+
+ * Site.......................... Aquí escribes tus estilos para la web se vea como tu quieres
+
+ * Home.......................... Estilos específicos de la Home
+
+
+/**
+ * Themes
+/**
+
+ * Theme......................... Capa de tema personalizado
+
+ * Admin......................... Capa de tema para gestión del site (Backoffice)
+
+
+/**
+ * Debug
+/**
 
  * Debug......................... Comprueba que el marcado HTML no contenga errores
  */

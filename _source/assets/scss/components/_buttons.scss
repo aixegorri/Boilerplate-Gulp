@@ -10,23 +10,23 @@
  * .btn es la clase principal para definir un botón
  */
 .btn {
-	display : inline-block;
-	line-height : $baselineheight * 1.5;
-	color : $textcolor;
-	text-align : center;
-	vertical-align : middle;
+	display: inline-block;
+	line-height: $baselineheight * 1.5;
+	color: $textcolor;
+	text-align: center;
+	vertical-align: middle;
 	font-size: .9em;
 	text-transform: uppercase;
-	white-space:nowrap;
-	background-color : $buttonbackground;
+	white-space: nowrap;
+	background-color: $buttonbackground;
 	border: $buttonborderwidth $buttonborderstyle $buttonbordercolor;
 	font-weight: $font_semibold;
-	cursor : pointer;
-	margin:0;
-	padding-top:   .5em;
-	padding-bottom:.5em;
+	cursor: pointer;
+	margin: 0;
+	padding-top: .5em;
+	padding-bottom: .5em;
 	padding-right: 3em;
-	padding-left: 	3em;
+	padding-left: 3em;
 	border-radius: $radius;
 
 	/**
@@ -57,15 +57,13 @@ Botones Variantes
 
 /**
  * Variantes de los botones: color para dar sensaciones.
- *
  */
-
 
 /**
 * Inputs con estilo de botones
 */
 input[type="submit"].btn:hover {
-	border-color : $buttonbordercolor;
+	border-color: $buttonbordercolor;
 }
 
 
@@ -74,7 +72,7 @@ input[type="submit"].btn:hover {
 */
 .btn--disabled {
 	@include opacity(.5);
-	cursor : default;
+	cursor: default;
 }
 
 /**
@@ -82,12 +80,12 @@ input[type="submit"].btn:hover {
 */
 .btn--error {
 	background-color: $color-error;
-	color : darken($color-error, 40%);
+	color: darken($color-error, 40%);
 	&:hover {
-		color : lighten($color-error, 40%);
+		color: lighten($color-error, 40%);
 	}
 	&:visited {
-		color : darken($color-error, 40%);
+		color: darken($color-error, 40%);
 	}
 }
 
@@ -96,16 +94,14 @@ input[type="submit"].btn:hover {
 */
 .btn--info {
 	background-color: $color-info;
-	color : darken($color-info, 40%);
+	color: darken($color-info, 40%);
 	&:hover {
-		color : lighten($color-info, 40%);
+		color: lighten($color-info, 40%);
 	}
 	&:visited {
-		color : darken($color-info, 40%);
+		color: darken($color-info, 40%);
 	}
 }
-
-
 
 /**
 * Botón principal
@@ -146,7 +142,7 @@ input[type="submit"].btn:hover {
 .btn--terciary {
 	background-color: $basecolor;
 	border-color: $basecolor;
-	padding: calc(.5em - 1px) calc(3em - 1px); 
+	padding: calc(.5em - 1px) calc(3em - 1px);
 	border-width: 2px;
 	color: $white;
 	font-weight: 500;
@@ -160,43 +156,40 @@ input[type="submit"].btn:hover {
 	}
 }
 
-
-
 /**
 * Botón de OK
 */
 .btn--success {
 	background-color: $color-success;
-	color : darken($color-success, 40%);
+	color: darken($color-success, 40%);
 	&:hover {
-		color : lighten($color-success, 40%);
+		color: lighten($color-success, 40%);
 	}
 	&:visited {
-		color : darken($color-success, 40%);
+		color: darken($color-success, 40%);
 	}
 }
-
-
 
 /**
 * Botón de advertencia
 */
 .btn--warning {
 	background-color: $color-warning;
-	color : darken($color-warning, 40%);
+	color: darken($color-warning, 40%);
 	&:hover {
-		color : lighten($color-warning, 40%); }
+		color: lighten($color-warning, 40%);
+	}
 	&:visited {
-		color : darken($color-warning, 40%);
+		color: darken($color-warning, 40%);
 	}
 }
 
 .btn--inactive,
 .btn--inactive:hover,
 .btn--inactive:active,
-.btn--inactive:focus{
+.btn--inactive:focus {
 	@include opacity(.5);
-	cursor : default;
+	cursor: default;
  }
 
 
@@ -209,22 +202,22 @@ Botones tamaños
  *
  */
 
-.btn--mini{
-	padding-right:0.5em;
+.btn--mini {
+	padding-right: 0.5em;
 	padding-left: 0.5em;
-	line-height:1.5;
+	line-height: 1.5;
 }
 
-.btn--small{
-	padding-right:1.5em;
+.btn--small {
+	padding-right: 1.5em;
 	padding-left: 1.5em;
-	line-height:2;
+	line-height: 2;
 }
 
-.btn--large{
-	padding-right:3em;
+.btn--large {
+	padding-right: 3em;
 	padding-left: 3em;
-	line-height:3;
+	line-height: 3;
 }
 
 
@@ -239,19 +232,19 @@ Botones grupos
  *
  */
 .btn--group {
-	position : relative;
-	*margin-left : .3em;
+	position: relative;
+	*margin-left: .3em;
 }
 
 .btn--group .btn {
-	position : relative;
+	position: relative;
 	border-radius: 0;
-	float : left;
-	margin-left : -1px;
+	float: left;
+	margin-left: -1px;
 }
 
 .btn--group .btn:first-child {
-	margin-left : 0;
+	margin-left: 0;
 	@include border-radius(0, 0, $radius, $radius);
 }
 
@@ -260,7 +253,7 @@ Botones grupos
 }
 
 .btn--group .btn.large:first-child {
-	margin-left : 0;
+	margin-left: 0;
 	@include border-radius($radius, 0, $radius, 0);
 }
 

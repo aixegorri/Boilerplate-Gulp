@@ -3,7 +3,7 @@
 		"stylelint-scss"
 	],
 	"ignoreFiles": [
-		"_source/assets/scss/core/**/*.s*ss",
+		"_source/assets/scss/core/{_functions,_mixins,_variables}.s*ss",
 		"_source/assets/scss/base/{_normalize,_reset}.s*ss"
 	],
 	"defaultSeverity": "warning",
@@ -40,11 +40,11 @@
 		"declaration-block-single-line-max-declarations": [1, {
 			"message": "Cada declaración debe tener su línea propia"
 		}],
-		"selector-max-empty-lines":0,
-		"max-nesting-depth": [3, {
-            "message": "El nesting es confuso. No más de tres niveles de identación"
+		"selector-max-empty-lines": 0,
+		"max-nesting-depth": [4, {
+            "message": "El nesting es confuso. No más de cuatro niveles de identación"
         }],
-        "function-max-empty-lines":0,
+        "function-max-empty-lines": 0,
         "unit-case": "lower",
         "value-keyword-case": "lower",
         "declaration-colon-newline-after": ["always-multi-line", {
@@ -100,7 +100,7 @@
         "at-rule-semicolon-newline-after": ["always", {
         	"message": "Cada at-rule en su propia línea"
         }],
-        "max-empty-lines":[4, {
+        "max-empty-lines": [4, {
         	"ignore": ["comments"],
         	"message": "No dejes más de dos líneas vacias"
         }]

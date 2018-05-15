@@ -4,11 +4,11 @@
 
 
 .nav {
-	>li {
+	> li {
 		position: relative;
 		display: inline-block;
 
-		>a {
+		> a {
 			position: relative;
 			padding: $navitempadding;
 			&:hover,
@@ -18,7 +18,7 @@
 			}
 		}
 	}
-	.dropdown>ul {
+	.dropdown > ul {
 		display: none;
 	}
 }
@@ -41,10 +41,10 @@
 	display: table;
 	width: 100%;
 
-	>li {
+	> li {
 		display: table-cell;
 
-		>a {
+		> a {
 			display: block;
 		}
 	}
@@ -71,13 +71,13 @@
 	background-color: $white;
 	list-style: none;
 
-	>li {
+	> li {
 		// Make the list-items overlay the bottom border
 		margin-bottom: -1px;
 		position: relative;
 
 		// Actual tabs (as links)
-		>a {
+		> a {
 			display: block;
 			line-height: $baselineheight;
 			outline: none;
@@ -85,11 +85,11 @@
 			&:hover {
 				background-color: transparent;
 				color: $darkgrey;
-				&:after {
+				&::after {
 					transform: scale(1);
 				}
 			}
-			&:after {
+			&::after {
 				position: absolute;
 				content: '';
 				height: 2px;
@@ -100,7 +100,7 @@
 				transition: all $hovertransition ease;
 				transform: scale(0);
 			}
-		} 
+		}
 		// Active state, and its :hover to override normal :hover
 		&.active > a {
 			background-color: transparent;
@@ -111,7 +111,7 @@
 				color: $basecolor;
 				border: none;
 				cursor: default;
-				&:after {
+				&::after {
 					transform: scale(1);
 				}
 			}
@@ -132,11 +132,11 @@ Tabbable Tabs
 	background-color: $white;
 	padding: 1rem;
 
-	>.tab-pane {
+	> .tab-pane {
 		padding: .5em 0;
 		display: none;
 	}
-	>.active {
+	> .active {
 		display: block;
 	}
 }
@@ -163,35 +163,26 @@ Hamburger Nav
 		height: 2px;
 	}
 	i:nth-child(1) {
-		-webkit-animation: outT 0.8s backwards;
 		animation: outT 0.8s backwards;
-		-webkit-animation-direction: reverse;
 		animation-direction: reverse;
 	}
 	i:nth-child(2) {
 		margin: 3px 0;
-		-webkit-animation: outM 0.8s backwards;
 		animation: outM 0.8s backwards;
-		-webkit-animation-direction: reverse;
 		animation-direction: reverse;
 	}
 	i:nth-child(3) {
-		-webkit-animation: outBtm 0.8s backwards;
 		animation: outBtm 0.8s backwards;
-		-webkit-animation-direction: reverse;
 		animation-direction: reverse;
 	}
 	&.active {
 		i:nth-child(1) {
-			-webkit-animation: inT 0.8s forwards;
 			animation: inT 0.8s forwards;
 		}
 		i:nth-child(2) {
-			-webkit-animation: inM 0.8s forwards;
 			animation: inM 0.8s forwards;
 		}
 		i:nth-child(3) {
-			-webkit-animation: inBtm 0.8s forwards;
 			animation: inBtm 0.8s forwards;
 		}
 	}

@@ -22,7 +22,7 @@
 		"dest": "dist"
 	},
 	"styles": {
-		"src": "_source/assets/scss/*.s*ss",
+		"src": "_source/assets/scss/**/*.s*ss",
 		"dest": "dist/assets/css"
 	},
 	"plugins": {

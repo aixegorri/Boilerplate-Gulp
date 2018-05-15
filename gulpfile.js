@@ -10,6 +10,7 @@ var config       = require('./config.json');
 var cssminifiy   = require('gulp-clean-css');
 var del          = require('del');
 var gulp         = require('gulp');
+var gulpif 		 = require('gulp-if');
 var imagemin 	 = require('gulp-imagemin')
 var mergeMq 	 = require('gulp-merge-media-queries');
 var notify       = require('gulp-notify');
@@ -21,6 +22,13 @@ var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var stylelint    = require('gulp-stylelint');
 var uglify       = require('gulp-uglify');
+
+
+
+
+
+// > Activar o desactivar stylelint en la tarea CSS
+const lintcss = false;
 
 
 
@@ -132,6 +140,14 @@ gulp.task('styles', function(cb) {
 	return gulp.src(config.styles.src)
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(gulpif(
+			lintcss, stylelint({
+				reporters: [{
+					formatter: 'string',
+					console: true
+				}]
+			})
+		))
 		.pipe(sass({
 			outputStyle: 'expanded',
 		}))
@@ -305,12 +321,12 @@ gulp.task('deploy',
 
 
 // > Check CSS Code
-gulp.task('lint-css', function(){
-    return gulp.src(config.watch.styles)
-        .pipe(stylelint({
-        	reporters: [{
-	    		formatter: 'string', 
-	    		console: true
-	    	}]
-        }))
+gulp.task('css-lint', function(){
+	return gulp.src(config.watch.styles)
+		.pipe(stylelint({
+			reporters: [{
+				formatter: 'string', 
+				console: true
+			}]
+		}))
 });

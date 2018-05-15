@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "gulp deploy",
     "dev": "gulp",
-    "watch": "gulp work",
-    "stylelint": "stylelint '**/*.scss'"
+    "watch": "gulp work"
   },
   "repository": {
     "type": "git",
@@ -29,6 +28,7 @@
     "gulp-cached": "^1.1.1",
     "gulp-clean-css": "^3.9.4",
     "gulp-concat": "^2.6.1",
+    "gulp-if": "^2.0.2",
     "gulp-imagemin": "^4.1.0",
     "gulp-merge-media-queries": "^0.2.1",
     "gulp-notify": "^3.2.0",

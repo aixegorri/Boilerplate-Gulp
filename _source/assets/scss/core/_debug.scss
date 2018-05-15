@@ -2,8 +2,6 @@
 =            Debug            =
 =============================*/
 
-
-
 /**
  * Activa esta hoja de estilos para detectar visualmente cualquier
  * anidación impropia o marcado potencialmente inválido.
@@ -21,8 +19,8 @@
 /**
  * Hay elementos vacíos?
  */
-:empty{
-    outline:5px solid yellow;
+:empty {
+	outline: 5px solid yellow;
 }
 
 
@@ -30,14 +28,14 @@
  * Las imágenes requieren el atributo ALT, un ALT vacío no es del todo malo
  * pero una imagen sin ALT definitivamente está mal.
  */
-img{
-    outline:5px solid red;
+img {
+	outline: 5px solid red;
 }
-img[alt]{
-    outline:none;
+img[alt] {
+	outline: none;
 }
-img[alt=""]{
-    outline:5px solid yellow;
+img[alt=""] {
+	outline: 5px solid yellow;
 }
 
 
@@ -45,11 +43,11 @@ img[alt=""]{
  * Los links algunas veces, no siempre, se benefician del atributo "title".
  * Links sin 'title' no son inválidos, pero es buena idea revisar.
  */
-a{
-    outline:5px solid yellow;
+a {
+	outline: 5px solid yellow;
 }
-a[title]{
-    outline:none;
+a[title] {
+	outline: none;
 }
 
 
@@ -57,16 +55,16 @@ a[title]{
  * Revisa los "href" con contenido dudoso.
  */
 a[href="#"],
-a[href*="javascript"]{
-    outline:5px solid yellow;
+a[href*="javascript"] {
+		outline: 5px solid yellow;
 }
 
 
 /**
  * El atributo 'target=""' es.... bueno, revisa.
  */
-a[target]{
-    outline:5px solid yellow;
+a[target] {
+	outline: 5px solid yellow;
 }
 
 
@@ -74,10 +72,10 @@ a[target]{
  * Asegúrate que una lista solo anida LI's
  */
 ul,
-ol{
-    > *:not(li){
-        outline:5px solid red;
-    }
+ol {
+	> *:not(li) {
+		outline: 5px solid red;
+	}
 }
 
 
@@ -85,38 +83,38 @@ ol{
  * Deberíamos asignar un atributo 'scope' a los th
  * http://bit.ly/1aHBDgW
  */
-th{
-    outline:5px solid yellow;
+th {
+	outline: 5px solid yellow;
 }
-th[scope]{
-    outline:none;
+th[scope] {
+	outline: none;
 }
 
 
 /**
  * los tr hijos de 'table' no son buenos, ¿necesitabas un 'thead' / 'tbody'?
  */
-table > tr{
-    outline:5px solid yellow;
+table > tr {
+	outline: 5px solid yellow;
 }
 
 
 /**
  * `tfoot` debe estar *antes* de `tbody`.
  */
-tbody + tfoot{
-    outline:5px solid yellow;
+tbody + tfoot {
+	outline: 5px solid yellow;
 }
 
 
 /**
  * Forms necesitan del atributo `action`
  */
-form{
-    outline:5px solid red;
+form {
+	outline: 5px solid red;
 }
-form[action]{
-    outline:none;
+form[action] {
+	outline: none;
 }
 
 
@@ -125,34 +123,34 @@ form[action]{
  * 'textarea' necesita `rows' y 'cols' y 'submit' necesita del atributo 'value'.
  */
 textarea,
-input{
-    outline:5px solid red;
+input {
+	outline: 5px solid red;
 }
-input[type]{
-    outline:none;
+input[type] {
+	outline: none;
 }
-textarea[rows][cols]{
-    outline:none;
+textarea[rows][cols] {
+	outline: none;
 }
-input[type=submit]{
-    outline:5px solid red;
+input[type=submit] {
+	outline: 5px solid red;
 }
-input[type=submit][value]{
-    outline:none;
+input[type=submit][value] {
+	outline: none;
 }
 
 
 /**
  * Evitamos estilos _inline_ a ser posible.
  */
-[style]{
-        outline:5px solid yellow;
+[style] {
+	outline: 5px solid yellow;
 }
 
 
 /**
  * Deberías evitar IDs para CSS.
  */
-[id]{
-        outline:5px solid yellow;
+[id] {
+	outline: 5px solid yellow;
 }
