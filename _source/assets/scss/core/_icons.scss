@@ -8,7 +8,7 @@
 	font-family: "Icons";
 	src: url('../fonts/Icons.eot');
 	/* stylelint-disable */
-	src: 
+	src:
 		url('../fonts/Icons.eot?#iefix') format('eot'),
 		url('../fonts/Icons.woff') format('woff'),
 		url('../fonts/Icons.ttf') format('truetype'),
@@ -42,7 +42,7 @@
 
 @mixin icon($filename,
 $insert: before) {
-	&:#{$insert} {
+	&::#{$insert} {
 		@extend %icon;
 		content: icon-char($filename);
 	}
