@@ -3,8 +3,13 @@
 =========================================================*/
 
 /**
- * Aquí incluímos todos los módulos (archivos .scss) que se can
+ * "7 folders, 1 file to merge them all"
+ *
+ * Aquí incluímos todos los módulos (archivos .scss) que van
  * a compilar en el CSS definitivo: /css/styles.css.
+ * siguiendo el patrón de arquitectura 7-1
+ * https://sass-guidelin.es/#architecture
+ *
  * Si no usas algún módulo, es recomendable que elimines
  * o comentes su inclusión para no tener estilos innecesarios en tu CSS final
  * y optimizar lo máximo posible.
@@ -42,6 +47,7 @@ Base
 /*----------
 Layout
 ----------*/
+@import 'layout/elements';
 @import 'layout/navigation';
 //@import 'layout/grid';
 //@import 'layout/header';
@@ -49,21 +55,19 @@ Layout
 //@import 'layout/sidebar';
 @import 'layout/forms';
 @import 'layout/links';
+@import 'layout/tipography';
 @import 'layout/textures';
-@import 'layout/tipografia';
 
 
 /*----------
 Components
 ----------*/
 @import 'components/animations';
-@import 'components/elements';
 @import 'components/buttons';
 @import 'components/pagination';
 @import 'components/tables';
 @import 'components/modals';
 //@import 'components/carousel';
-//@import 'components/cover';
 //@import 'components/dropdown';
 
 

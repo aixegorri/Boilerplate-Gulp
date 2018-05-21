@@ -5,43 +5,43 @@
 
 
 @-webkit-viewport {
-	width : device-width;
+	width: device-width;
 }
 
 @-moz-viewport {
-	width : device-width;
+	width: device-width;
 }
 
 @-ms-viewport {
-	width : device-width;
+	width: device-width;
 }
 
 @-o-viewport {
-	width : device-width;
+	width: device-width;
 }
 
 @viewport {
-	width : device-width;
+	width: device-width;
 }
 
 html {
-	background : $background;
-	font-size : 100%;
-	-webkit-overflow-scrolling : touch;
-	-webkit-tap-highlight-color : transparent;
-	-webkit-text-size-adjust : 100%;
-	-ms-text-size-adjust : 100%;
+	background: $background;
+	font-size: 100%;
+	-webkit-overflow-scrolling: touch;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
 }
 
 body {
-	margin : 0;
-	padding : 0;
-	width : 100%;
-	background-color : transparent;
-	font-family : $basefont;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background-color: transparent;
+	font-family: $basefont;
 	@include font-size();
-	line-height : $baselineheight;
-	color : $textcolor;
+	line-height: $baselineheight;
+	color: $textcolor;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

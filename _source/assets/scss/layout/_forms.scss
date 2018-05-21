@@ -6,42 +6,42 @@
 
 
 form {
-	margin : 0 0 $baselineheight 0;
+	margin: 0 0 $baselineheight 0;
 
 	fieldset {
-		margin-bottom : $baselineheight;
-		padding : 0;
-		border-width : 0;
+		margin-bottom: $baselineheight;
+		padding: 0;
+		border-width: 0;
 	}
 
 	legend {
-		display : block;
-		width : 100%;
-		margin-bottom : $baselineheight * 2;
-		padding : 0;
-		color : $textcolor;
-		border : 0;
-		border-bottom : $inputborderwidth $inputborderstyle $inputborder;
-		white-space : normal;
+		display: block;
+		width: 100%;
+		margin-bottom: $baselineheight * 2;
+		padding: 0;
+		color: $textcolor;
+		border: 0;
+		border-bottom: $inputborderwidth $inputborderstyle $inputborder;
+		white-space: normal;
 
 		small {
 			@include font-size(14);
-		color : $lightgrey;
+		color: $lightgrey;
 		}
 	}
 
 	p {
-		margin-bottom : $baselineheight / 2;
+		margin-bottom: $baselineheight / 2;
 	}
 
 	ul {
-		list-style-type : none;
-		margin : 0 0 $baselineheight 0;
-		padding : 0;
+		list-style-type: none;
+		margin: 0 0 $baselineheight 0;
+		padding: 0;
 	}
 
 	br {
-		display : none;
+		display: none;
 	}
 }
 
@@ -52,8 +52,8 @@ select,
 textarea {
 	@include font-size(16);
 	border-radius: 0;
-	vertical-align : baseline;
-	*vertical-align : middle;
+	vertical-align: baseline;
+	*vertical-align: middle;
 	@include media-query-bp($bp2,min,width,screen) {
 	  @include font-size(14);
    }
@@ -65,21 +65,21 @@ button,
 select,
 textarea {
 	appearance: none;
-	font-family : $basefont;
+	font-family: $basefont;
 	@include box-sizing(border-box);
 }
 
 label {
-	display : block;
-	margin-bottom : $baseline / 8;
-	font-weight : bold;
-	color : $textcolor;
-	cursor : pointer;
+	display: block;
+	margin-bottom: $baseline / 8;
+	font-weight: bold;
+	color: $textcolor;
+	cursor: pointer;
 
 	input,
 	textarea,
 	select {
-		display : block;
+		display: block;
 	}
 }
 
@@ -91,26 +91,26 @@ button {
 input,
 textarea,
 select {
-   display : inline-block;
-   width : 100%;
-   padding : rem(5) rem(10);
-   margin-bottom : $baselineheight / 4;
-   background-color : $inputbackground;
-   border : $inputborderwidth $inputborderstyle $inputborder;
-   color : $textcolor;
+   display: inline-block;
+   width: 100%;
+   padding: rem(5) rem(10);
+   margin-bottom: $baselineheight / 4;
+   background-color: $inputbackground;
+   border: $inputborderwidth $inputborderstyle $inputborder;
+   color: $textcolor;
    height: $baselineheight * 2;
 
    &:hover {
-	  border-color : $inputhover;
+	  border-color: $inputhover;
    }
 }
 
 .input-mini {
-	width : 60px;
+	width: 60px;
 }
 
 .input-small {
-	width : 90px;
+	width: 90px;
 }
 
 input[type="date"] {
@@ -120,58 +120,58 @@ input[type="date"] {
 input[type="image"],
 input[type="checkbox"],
 input[type="radio"] {
-	width : auto;
-	height : auto;
-	padding : 0;
-	margin : 3px 0;
-	*margin-top : 0;
-	line-height : normal;
-	cursor : pointer;
-	border : 0 \9;
+	width: auto;
+	height: auto;
+	padding: 0;
+	margin: 3px 0;
+	*margin-top: 0;
+	line-height: normal;
+	cursor: pointer;
+	border: 0 \9;
 }
 
 input[type="checkbox"],
 input[type="radio"] {
 	@include box-sizing(border-box);
-	padding : 0;
-	*width : 13px;
-	*height : 13px;
+	padding: 0;
+	*width: 13px;
+	*height: 13px;
 }
 
 input[type="image"] {
-	border : 0;
+	border: 0;
 	@include box-shadow(none);
 }
 
 input[type="file"] {
-	width : auto;
-	padding : initial;
-	line-height : initial;
-	border : initial;
-	background-color : transparent;
-	background-color : initial;
+	width: auto;
+	padding: initial;
+	line-height: initial;
+	border: initial;
+	background-color: transparent;
+	background-color: initial;
 	@include box-shadow(none);
 }
 
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	width : auto;
-	height : auto;
-	cursor : pointer;
-	*overflow : visible;
+	width: auto;
+	height: auto;
+	cursor: pointer;
+	*overflow: visible;
 }
 
 select,
 input[type="file"] {
-	// height : 28px;
-	// *margin-top : 4px;
-	// line-height : 28px;
+	// height: 28px;
+	// *margin-top: 4px;
+	// line-height: 28px;
 }
 
 select {
 	outline: none;
-	background-color : $inputbackground;
+	background-color: $inputbackground;
 	background-image: url(#{$image-dir}/icons/arrow_drop_down.svg);
 	background-repeat: no-repeat;
 	background-position: right center;
@@ -181,43 +181,43 @@ select {
 
 select[multiple],
 select[size] {
-	height : auto;
+	height: auto;
 }
 
 textarea {
 @include resize(vertical);
-	height : auto;
-	overflow : auto;
-	vertical-align : top;
+	height: auto;
+	overflow: auto;
+	vertical-align: top;
 }
 
 input[type="hidden"] {
-	display : none;
+	display: none;
 }
 
 .radio,
 .checkbox {
-	padding-left : 18px;
-	font-weight : normal;
+	padding-left: 18px;
+	font-weight: normal;
 }
 
 .radio input[type="radio"],
 .checkbox input[type="checkbox"] {
-	float : left;
-	margin-left : -18px;
+	float: left;
+	margin-left: -18px;
 }
 
 .radio.inline,
 .checkbox.inline {
-	display : inline-block;
-	padding-top : 5px;
-	margin-bottom : 0;
-	vertical-align : middle;
+	display: inline-block;
+	padding-top: 5px;
+	margin-bottom: 0;
+	vertical-align: middle;
 }
 
 .radio.inline + .radio.inline,
 .checkbox.inline + .checkbox.inline {
-	margin-left : 10px;
+	margin-left: 10px;
 }
 
 
@@ -232,7 +232,7 @@ input[readonly],
 select[readonly],
 textarea[readonly] {
 	@include opacity(.5);
-	cursor : not-allowed;
+	cursor: not-allowed;
 }
 
 
@@ -242,9 +242,9 @@ Focus & Active
 
 input:focus,
 textarea:focus {
-	border-color : $inputfocus;
-	outline : 0;
-	outline : thin dotted \9;
+	border-color: $inputfocus;
+	outline: 0;
+	outline: thin dotted \9;
 }
 
 input[type="file"]:focus,
@@ -268,18 +268,18 @@ Help Text
 
 .help-block,
 .help-inline {
-	color : $grey;
+	color: $grey;
 }
 
 .help-block {
-	display : block;
-	margin-bottom : $baselineheight / 2;
+	display: block;
+	margin-bottom: $baselineheight / 2;
 }
 
 .help-inline {
-	display : inline-block;
-	vertical-align : middle;
-	padding-left : 5px;
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 5px;
 }
 
 
@@ -290,27 +290,27 @@ Form-inline
 .form-inline input,
 .form-inline textarea,
 .form-inline select {
-	display : inline-block;
-	margin-bottom : 0;
+	display: inline-block;
+	margin-bottom: 0;
 }
 
 .form-inline label {
-	display : inline-block;
+	display: inline-block;
 }
 
 .form-inline .radio,
 .form-inline .checkbox,
 .form-inline .radio {
-	padding-left : 0;
-	margin-bottom : 0;
-	vertical-align : middle;
+	padding-left: 0;
+	margin-bottom: 0;
+	vertical-align: middle;
 }
 
 .form-inline .radio input[type="radio"],
 .form-inline .checkbox input[type="checkbox"] {
-	float : left;
-	margin-left : 0;
-	margin-right : 3px;
+	float: left;
+	margin-left: 0;
+	margin-right: 3px;
 }
 
 
@@ -321,33 +321,33 @@ Form-search
 .form-search input,
 .form-search textarea,
 .form-search select {
-	display : inline-block;
-	margin-bottom : 0;
+	display: inline-block;
+	margin-bottom: 0;
 }
 
 .form-search .search-query {
-	padding-left : 14px;
-	padding-right : 14px;
-	margin-bottom : 0;
+	padding-left: 14px;
+	padding-right: 14px;
+	margin-bottom: 0;
 }
 
 .form-search label {
-	display : inline-block;
+	display: inline-block;
 }
 
 .form-search .radio,
 .form-search .checkbox,
 .form-inline .radio {
-	padding-left : 0;
-	margin-bottom : 0;
-	vertical-align : middle;
+	padding-left: 0;
+	margin-bottom: 0;
+	vertical-align: middle;
 }
 
 .form-search .radio input[type="radio"],
 .form-search .checkbox input[type="checkbox"] {
-	float : left;
-	margin-left : 0;
-	margin-right : 3px;
+	float: left;
+	margin-left: 0;
+	margin-right: 3px;
 }
 
 .form-search {
@@ -364,12 +364,11 @@ Form-search
 			top: 0;
 			width: em(50);
 			height: $baselineheight * 2;
-			padding : rem(5) rem(10);
+			padding: rem(5) rem(10);
 			
 			svg {
 				width: em(20);
-				fill: $grey {
-				}
+				fill: $grey;
 			}
 		}
 	}
@@ -386,12 +385,12 @@ Required
 */
 
 input:required:focus:invalid {
-	background-color:lighten($color-alert, 5%);
-	border:1px solid $color-alert;
+	background-color: lighten($color-alert, 5%);
+	border: 1px solid $color-alert;
 }
 input:required:focus:valid {
-	background-color:lighten($color-success, 40%);
-	border:1px solid $color-success;
+	background-color: lighten($color-success, 40%);
+	border: 1px solid $color-success;
 }
 
 label .required {
@@ -410,11 +409,11 @@ Icon input
 
 .icon-input {
 	position: relative;
-	margin-bottom : $baselineheight / 4;
+	margin-bottom: $baselineheight / 4;
 	
 	input {
 		position: relative;
-		margin-bottom : 0;
+		margin-bottom: 0;
 		padding-left: em(45);
 	}
 	figure {

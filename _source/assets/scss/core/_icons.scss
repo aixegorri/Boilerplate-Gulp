@@ -4,14 +4,25 @@
 
 
 
+@font-face {
+	font-family: "Icons";
+	src: url('../fonts/Icons.eot');
+	/* stylelint-disable */
+	src:
+		url('../fonts/Icons.eot?#iefix') format('eot'),
+		url('../fonts/Icons.woff') format('woff'),
+		url('../fonts/Icons.ttf') format('truetype'),
+		url('../fonts/Icons.svg#Icons') format('svg');
+	/* stylelint-enable */
+}
+
 %icon {
 	font-family: "Icons";
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	font-style: normal;
 	font-variant: normal;
-	font-weight: normal;
-	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	font-weight: normal; // speak: none; // only necessary if not using the private unicode range (firstGlyph option)
 	text-decoration: none;
 	text-transform: none;
 }
@@ -19,18 +30,19 @@
 @function icon-char($filename) {
 	$char: "";
 
-	@if $filename == rocknroll {
+	@if $filename==rocknroll {
 		$char: "\E001";
 	}
-	@if $filename == stormtrooper {
+	@if $filename==stormtrooper {
 		$char: "\E002";
 	}
 
 	@return $char;
 }
 
-@mixin icon($filename, $insert: before) {
-	&:#{$insert} {
+@mixin icon($filename,
+$insert: before) {
+	&::#{$insert} {
 		@extend %icon;
 		content: icon-char($filename);
 	}
@@ -39,6 +51,7 @@
 .icon-rocknroll {
 	@include icon(rocknroll);
 }
+
 .icon-stormtrooper {
 	@include icon(stormtrooper);
 }

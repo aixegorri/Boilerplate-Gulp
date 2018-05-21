@@ -10,14 +10,25 @@ var config       = require('./config.json');
 var cssminifiy   = require('gulp-clean-css');
 var del          = require('del');
 var gulp         = require('gulp');
+var gulpif 		 = require('gulp-if');
+var imagemin 	 = require('gulp-imagemin')
 var mergeMq 	 = require('gulp-merge-media-queries');
 var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
+var processhtml	 = require('gulp-processhtml');
 var reload       = browserSync.reload;
 var rename       = require('gulp-rename');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
+var stylelint    = require('gulp-stylelint');
 var uglify       = require('gulp-uglify');
+
+
+
+
+
+// > Activar o desactivar stylelint en la tarea CSS
+const lintcss = false;
 
 
 
@@ -62,6 +73,18 @@ gulp.task('images', function () {
 
 
 
+// > Minify Images
+gulp.task('images-min', function () {
+	return gulp.src(config.images.src)
+		.pipe(imagemin())
+		.pipe(gulp.dest(config.images.dest))
+		.pipe(notify({message: '> IMAGES MIN OK', onLast: true}));
+});
+
+
+
+
+
 // > Copy Vendor JS (Jquery, Modernizr..)
 gulp.task('vendor-js', function () {
 	return gulp.src(config.vendorJS.src)
@@ -98,11 +121,38 @@ gulp.task('docs', function(cb) {
 
 
 
-// > Process SASS/SCSS files to generate final css files in 'dist' folder
+
+// > Minify .HTML files into 'dist' folder
+gulp.task('docs-min', function(cb) {
+	return gulp.src(config.docs.src)
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(processhtml())
+		.pipe(gulp.dest(config.docs.dest))
+		.pipe(notify({message: '> HTML MIN OK', onLast: true}));
+});
+
+
+
+
+
+// > Process SASS/SCSS files to generate final CSS files in 'dist' folder
 gulp.task('styles', function(cb) {
 	return gulp.src(config.styles.src)
 		.pipe(sourcemaps.init())
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(plumber({
+			errorHandler: notify.onError({
+				message: 'Error: <%= error.message %>',
+				title: 'Error on CSS'
+			})
+		}))
+		.pipe(gulpif(
+			lintcss, stylelint({
+				reporters: [{
+					formatter: 'string',
+					console: true
+				}]
+			})
+		))
 		.pipe(sass({
 			outputStyle: 'expanded',
 		}))
@@ -126,12 +176,17 @@ gulp.task('styles', function(cb) {
 
 
 
-// > Process SASS/SCSS files to generate final css files in 'dist' folder
+// > Process SASS/SCSS files to generate final minified CSS files in 'dist' folder
 gulp.task('styles-min', function(cb) {
 	return gulp.src(config.styles.src)
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(plumber({
+			errorHandler: notify.onError({
+				message: 'Error: <%= error.message %>',
+				title: 'Error on CSS'
+			})
+		}))
 		.pipe(sass({
-			outputStyle: 'compressed',
+			outputStyle: 'expanded',
 		}))
 		.pipe(mergeMq({
 			log: true
@@ -143,7 +198,9 @@ gulp.task('styles-min', function(cb) {
 			],
 			cascade: false
 		}))
+		.pipe(gulp.dest(config.styles.dest))
 		.pipe(cssminifiy())
+		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest(config.styles.dest))
 		.pipe(notify({message: '> CSS MIN OK', onLast: true}));
 });
@@ -265,6 +322,21 @@ gulp.task('default',
 // > Build production-ready 'dist' folder
 gulp.task('deploy',
 	gulp.series('clean', 'styles-min',
-		gulp.parallel('fonts', 'images', 'vendor-js', 'statics', 'docs', 'plugins-clean', 'scripts-min')
+		gulp.parallel('fonts', 'images-min', 'vendor-js', 'statics', 'docs-min', 'plugins-clean', 'scripts-min')
 	)
 );
+
+
+
+
+
+// > Check CSS Code
+gulp.task('css-lint', function(){
+	return gulp.src(config.watch.styles)
+		.pipe(stylelint({
+			reporters: [{
+				formatter: 'string', 
+				console: true
+			}]
+		}))
+});

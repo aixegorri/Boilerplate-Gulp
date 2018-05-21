@@ -5,41 +5,41 @@
 
 
 table {
-	width : 100%;
-	max-width : 100%;
-	margin-bottom : $baselineheight;
-	border-collapse : collapse;
-	border-spacing : 0;
-	background-color : $tablebackground;
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: $baselineheight;
+	border-collapse: collapse;
+	border-spacing: 0;
+	background-color: $tablebackground;
 
 	th,
 	td {
-		padding : 8px;
-		vertical-align : top;
-		border-top : $tableborderwidth $tableborderstyle $tableborder;
+		padding: 8px;
+		vertical-align: top;
+		border-top: $tableborderwidth $tableborderstyle $tableborder;
 		@include font-size(14);
-		line-height : $baselineheight;
-		text-align : left;
+		line-height: $baselineheight;
+		text-align: left;
 		min-width: em(100);
 	}
 
 	th {
-		font-weight : bold;
+		font-weight: bold;
 	}
 
 	thead th {
-		vertical-align : bottom;
+		vertical-align: bottom;
 	}
 
 	colgroup + thead tr:first-child th,
 	colgroup + thead tr:first-child td,
 	thead:first-child tr:first-child th,
 	thead:first-child tr:first-child td {
-		border-top : 0;
+		border-top: 0;
 	}
 
 	tbody + tbody {
-		border-top : $tableborderwidth * 2 $tableborderstyle $tableborder;
+		border-top: $tableborderwidth * 2 $tableborderstyle $tableborder;
 	}
 
 	tbody tr td,
@@ -49,7 +49,7 @@ table {
 
 	tbody tr:hover td,
 	tbody tr:hover th {
-		// background-color : $tablehover;
+		// background-color: $tablehover;
 	}
 }
 
@@ -57,30 +57,30 @@ table {
 Condensed
 ----------*/
 .table-condensed {
-
-th,
-td {
-	padding : 4px 5px; }
+	th,
+	td {
+		padding: 4px 5px;
+	}
 }
 
 /*----------
 Bordered
 ----------*/
 .table-bordered {
-	border : $tableborderwidth $tableborderstyle $tableborder;
-	border-left : 0;
-	border-collapse : separate;
-	*border-collapse : collapsed;
+	border: $tableborderwidth $tableborderstyle $tableborder;
+	border-left: 0;
+	border-collapse: separate;
+	*border-collapse: collapsed;
 
 	th,
 	td {
-		border-left : $tableborderwidth $tableborderstyle $tableborder;
+		border-left: $tableborderwidth $tableborderstyle $tableborder;
 	}
 
 	thead:first-child tr:first-child th,
 	tbody:first-child tr:first-child th,
 	tbody:first-child tr:first-child td {
-		border-top : 0;
+		border-top: 0;
 	}
 }
 
@@ -91,7 +91,7 @@ Striped
 
 	tbody tr:nth-child(odd) td,
 	tbody tr:nth-child(odd) th {
-		background-color : $tablestripe;
+		background-color: $tablestripe;
 	}
 }
 
@@ -108,7 +108,8 @@ Responsive
 			width: auto;
 			min-width: 100%;
 		}
-		th,td {
+		th,
+		td {
 			white-space: nowrap;
 		}
 	}

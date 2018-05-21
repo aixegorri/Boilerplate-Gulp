@@ -5,25 +5,25 @@
 
 
 a {
-	text-decoration : none;
-	color : $linkcolor;
+	text-decoration: none;
+	color: $linkcolor;
 
 	// &:visited {
-	// 	color : $linkcolorvisited;
+	// 	color: $linkcolorvisited;
 	// }
 
 	&:hover {
-		text-decoration : underline;
-		color : $linkcolorhover;
+		text-decoration: underline;
+		color: $linkcolorhover;
 	}
 
 	&:focus {
-		outline : thin dotted;
-		color : $linkcolorfocus;
+		outline: thin dotted;
+		color: $linkcolorfocus;
 	}
 
 	&:hover,
 	&:active {
-		outline : 0;
+		outline: 0;
 	}
 }

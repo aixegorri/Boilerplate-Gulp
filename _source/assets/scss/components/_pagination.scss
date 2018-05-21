@@ -2,8 +2,6 @@
 =            Paginación            =
 ==================================*/
 
-
-
 /**
  * Paginación básica
  * Requiere algunos comentarios para evitar el espacio causado por
@@ -51,7 +49,7 @@
 				 display: inline-block;
 				 height: em(40);
 				 min-width: em(40);
-				 padding: em(10) em(5); 
+				 padding: em(10) em(5);
 				 background-color: $lightergrey;
 				 color: $grey;
 				 border-radius: 50%;
@@ -85,10 +83,10 @@
 	 }
 }
 
-.pagination__first a:before {
+.pagination__first a::before {
 	 content: "\00AB" "\00A0";
 }
 
-.pagination__last a:after {
+.pagination__last a::after {
 	 content: "\00A0" "\00BB";
 }
